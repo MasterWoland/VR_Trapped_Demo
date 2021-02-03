@@ -12,22 +12,38 @@ public class TestActionInput : MonoBehaviour
     private void Start()
     {
         
-        _isPressed = _controller.selectAction.action.ReadValue<bool>();
+        // _isPressed = _controller.selectAction.action.ReadValue<bool>();
     }
 
     private void OnEnable()
     {
         _controller = GetComponent<ActionBasedController>();
+        _controller.selectAction.action.started += OnSelectActionPressed;
         _controller.selectAction.action.performed += OnSelectActionPerformed;
+        _controller.selectAction.action.canceled += OnSelectActionReleased;
     }
-    
+
     private void OnDisable()
     {
+        _controller.selectAction.action.started -= OnSelectActionPressed;
         _controller.selectAction.action.performed -= OnSelectActionPerformed;
+        _controller.selectAction.action.canceled -= OnSelectActionReleased;
+    }
+
+    private void OnSelectActionPressed(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Select button is started/pressed");
+        
     }
 
     private void OnSelectActionPerformed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Select button is pressed");
+        Debug.Log("Select button is pressed/performed");
+    }
+
+    private void OnSelectActionReleased(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Select button is released");
+        
     }
 }
