@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentSceneName: 0
+  _loadSceneEvent: {fileID: 11400000, guid: 695bc37353c6ee24b921f7e51b6d597a, type: 2}
   _sceneLoadedEvent: {fileID: 11400000, guid: 73a22b1c03a896b42851aa0ccf4eb438, type: 2}
