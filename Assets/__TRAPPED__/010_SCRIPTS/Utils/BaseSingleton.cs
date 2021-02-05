@@ -6,8 +6,10 @@ namespace nl.allon.utils
 {
 	public abstract class BaseSingleton<T> : MonoBehaviour where T : BaseSingleton<T>
 	{
+		// MRA: we do not want access via an instance to a Singleton
+		// MRA: the function of a Singleton is to guarantee there is only one
 		private static  T _instance;
-		public static T Instance { get { return _instance; } }
+		// public static T Instance { get { return _instance; } } 
 		public static bool IsInitiliazed { get { return _instance != null; } }
 
 		protected virtual void Awake()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,8 @@ namespace nl.allon.managers
 		// Additive: loads a Scene which appears in the Hierarchy window while another is active.
 
 		public SCENE_NAME CurrentSceneName = SCENE_NAME.Boot;
-		[SerializeField] private SceneEvent _sceneLoadedEvent;
+		[SerializeField] private SceneEvent _loadSceneEvent; // Received in order to load a scene
+		[SerializeField] private SceneEvent _sceneLoadedEvent; // Dispatched when a scene is loaded
 		private List<AsyncOperation> _loadOperations;
 		private SCENE_NAME _loadingScene = SCENE_NAME.Boot;
 
@@ -31,6 +33,7 @@ namespace nl.allon.managers
 			DontDestroyOnLoad(this.gameObject);
 		}
 
+		#region LOADING
 		// public void LoadScene(SCENE_NAME sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
 		// {
 		// 	// When using SceneManager.LoadScene, the loading does not happen immediately, it completes in the next frame.
@@ -40,7 +43,7 @@ namespace nl.allon.managers
 		// 	CurrentSceneName = sceneName;
 		// }
 
-		public void LoadSceneAsync(SCENE_NAME sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
+		private void LoadSceneAsync(SCENE_NAME sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
 		{
 			// The Application loads the Scene in the background as the current Scene runs.
 
@@ -55,14 +58,6 @@ namespace nl.allon.managers
 			_loadingScene = sceneName;
 			ao.completed += OnLoadOperationComplete;
 			_loadOperations.Add(ao);
-		}
-
-		// MRA: currently not in use
-		public void UnloadLevel(SCENE_NAME sceneName)
-		{
-			// Destroys all GameObjects associated with the given Scene and removes the Scene from the SceneManager.
-			AsyncOperation ao = SceneManager.UnloadSceneAsync(sceneName.ToString());
-			ao.completed += OnUnloadOperationComplete;
 		}
 
 		private void OnLoadOperationComplete(AsyncOperation ao)
@@ -82,6 +77,16 @@ namespace nl.allon.managers
 				}
 			}
 		}
+		#endregion
+		
+		#region UNLOADING
+		// MRA: currently not in use
+		private void UnloadLevel(SCENE_NAME sceneName)
+		{
+			// Destroys all GameObjects associated with the given Scene and removes the Scene from the SceneManager.
+			AsyncOperation ao = SceneManager.UnloadSceneAsync(sceneName.ToString());
+			ao.completed += OnUnloadOperationComplete;
+		}
 
 		private void OnUnloadOperationComplete(AsyncOperation ao)
 		{
@@ -90,5 +95,24 @@ namespace nl.allon.managers
 			// Clean up level
 			// MRA: do whatever we need to do after unloading the scene
 		}
+		#endregion
+		
+		#region EVENT HANDLING
+		private void OnEnable()
+		{
+			_loadSceneEvent.Handler += OnLoadScene;
+		}
+		
+		private void OnDisable()
+		{
+			_loadSceneEvent.Handler -= OnLoadScene;
+		}
+
+		private void OnLoadScene(SCENE_NAME sceneName)
+		{
+			// Debug.Log("Going to load: "+sceneName.ToString());
+			LoadSceneAsync(sceneName, LoadSceneMode.Single);
+		}
+		#endregion
 	}
 }
