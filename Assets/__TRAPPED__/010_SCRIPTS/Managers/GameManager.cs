@@ -15,6 +15,7 @@ namespace nl.allon.managers
             BOOT, 
             LOADING,
             MENU,
+            LOADING_LEVEL, // MRA: the proper level is setup according to its config
             LEVEL_INFO, // MRA: ready to play level, showing info [= PRE_GAME?]
             RUNNING,
             GAME_OVER
@@ -24,10 +25,11 @@ namespace nl.allon.managers
         public GameState CurrentGameState { get { return _currentGameState; } }
 
         // Events
-        [SerializeField] private SimpleEvent _obtainDeviceDataEvent;
-        [SerializeField] private SceneEvent _sceneLoadedEvent;
-        [SerializeField] private SceneEvent _loadSceneEvent;
-
+        [SerializeField] private SimpleEvent _obtainDeviceDataEvent = default;
+        [SerializeField] private GameStateEvent _gameStateEvent = default;
+        [SerializeField] private SceneEvent _sceneLoadedEvent = default;
+        [SerializeField] private SceneEvent _loadSceneEvent = default;
+        [SerializeField] private IntEvent _levelReadyEvent = default;
         private void Start()
         {
             DontDestroyOnLoad(this);
@@ -53,6 +55,10 @@ namespace nl.allon.managers
                     // MRA: returning to the pre-game menu
                     _currentGameState = GameState.MENU;
                     break;
+                case GameState.LOADING_LEVEL:
+                    // MRA: returning to the pre-game menu
+                    _currentGameState = GameState.LOADING_LEVEL;
+                    break;
                 case GameState.LEVEL_INFO:
                     // MRA: showing info to player before the level can be played					
                     _currentGameState = GameState.LEVEL_INFO;
@@ -72,6 +78,7 @@ namespace nl.allon.managers
                     break;
             }
 
+            _gameStateEvent?.Dispatch(_currentGameState);
             Debug.Log("[GM] cur game state: "+_currentGameState.ToString());
         }
 
@@ -93,7 +100,7 @@ namespace nl.allon.managers
                 case SCENE_NAME.Game:
                     // Debug.Log("GM: loaded: "+sceneName.ToString());
                     // We have no Menu State at this moment, so we go to the Level Info State
-                    ChangeState(GameState.LEVEL_INFO);
+                    ChangeState(GameState.LOADING_LEVEL);
                     break;
                 default:
                     break;
@@ -108,7 +115,7 @@ namespace nl.allon.managers
             
             // After obtaining the Device Data we are ready to load the menu scene
             // if we have one, else we load the Game scene
-            _loadSceneEvent.Dispatch(SCENE_NAME.Game);
+            _loadSceneEvent?.Dispatch(SCENE_NAME.Game);
         }
         #endregion
     }

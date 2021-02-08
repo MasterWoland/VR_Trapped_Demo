@@ -15,7 +15,7 @@ namespace nl.allon.utils
 		protected virtual void Awake()
 		{
 			if(_instance != null) {
-				Debug.LogErrorFormat("[BaseSingleton] Trying to instantiate a second instance of BaseSingleton class {0}" + GetType().Name);
+				Debug.LogErrorFormat("[BaseSingleton] Trying to instantiate a second instance of BaseSingleton class {0}", GetType().Name);
 			} else {
 				_instance = (T)this;
 			}
