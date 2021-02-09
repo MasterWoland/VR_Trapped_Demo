@@ -87,18 +87,26 @@ namespace nl.allon.managers
         {
             _sceneLoadedEvent.Handler += OnSceneLoaded;
             _obtainDeviceDataEvent.Handler += OnObtainDeviceDataEvent;
+            _levelReadyEvent.Handler += OnLevelReadyEvent;
         }
 
         private void OnDisable()
         {
             _sceneLoadedEvent.Handler -= OnSceneLoaded;
+            _levelReadyEvent.Handler -= OnLevelReadyEvent;
+        }
+
+        private void OnLevelReadyEvent(int levelNumber)
+        {
+            Debug.Log("[GM] Level Ready: " + levelNumber);
+            ChangeState(GameState.LEVEL_INFO); // MRA -> for now we go directly to RUNNING
+            ChangeState(GameState.RUNNING);
         }
 
         private void OnSceneLoaded(SCENE_NAME sceneName)
         {
             switch (sceneName) {
                 case SCENE_NAME.Game:
-                    // Debug.Log("GM: loaded: "+sceneName.ToString());
                     // We have no Menu State at this moment, so we go to the Level Info State
                     ChangeState(GameState.LOADING_LEVEL);
                     break;

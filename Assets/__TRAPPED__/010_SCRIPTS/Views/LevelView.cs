@@ -19,8 +19,6 @@ namespace nl.allon.views
 
         public void PrepareNewLevel(LevelConfig config)
         {
-            Debug.Log("[LevelView] level: "+config.LevelNum);
-            
             if (_environment != null)
             {
                 Debug.Log("[LevelView] We already have an environment "+_environment.name);
@@ -28,8 +26,9 @@ namespace nl.allon.views
             }
             else
             {
-                Debug.Log("[LevelView] No environment yet");
+                // Debug.Log("[LevelView] No environment yet");
                 _environment = Instantiate(config.EnvironmentPrefab, _transform);
+                this.gameObject.SetActive(true);
             }
         }
     }

@@ -13,25 +13,32 @@ namespace nl.allon.configs
         public GameObject EnvironmentPrefab = default;
         
         // Blocks
-        public GameObject BlockPrefab = default;
+        public GameObject BlockControllerPrefab = default;
+        public GameObject BlockViewPrefab = default;
         public int NumRows = 0;
         public int NumColumns = 0;
         public float MinColumnSpeed = 0;
         public float MaxColumnSpeed = 0;
-            
+        public Vector3 TopLeftPosition = default; // MRA: used to calculate all subsequent positions   
+        
         public float GetBlockHeight()
         {
-            return BlockPrefab.transform.localScale.y;
+            return BlockViewPrefab.transform.localScale.y;
         }
         
         public float GetBlockWidth()
         {
-            return BlockPrefab.transform.localScale.x;
+            return BlockViewPrefab.transform.localScale.x;
         }
         
         public float GetBlockDepth()
         {
-            return BlockPrefab.transform.localScale.z;
+            return BlockViewPrefab.transform.localScale.z;
+        }
+
+        public Vector3 GetDimensions()
+        {
+            return BlockViewPrefab.transform.localScale;
         }
     }
 }

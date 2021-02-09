@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace nl.allon.models
 {
+    /// <summary>
+    /// Data of all levels. Contains config files of all levels.
+    /// </summary>
     [CreateAssetMenu(fileName = "LevelModel", menuName = "Model/LevelModel")]
     public class LevelModel:ScriptableObject
     {

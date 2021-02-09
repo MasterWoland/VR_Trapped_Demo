@@ -13,10 +13,13 @@ namespace nl.allon.controllers
 {
     public class LevelController : BaseSingleton<LevelController>
     {
-        [SerializeField] private LevelModel _model = default;
+        // events
         [SerializeField] private GameStateEvent _gameStateEvent = default;
         [SerializeField] private IntEvent _levelReadyEvent = default;
         [SerializeField] private LevelConfigEvent _prepareLevelEvent = default;
+        [SerializeField] private SimpleEvent _blocksManagerReadyEvent = default;
+        
+        [SerializeField] private LevelModel _model = default;
         
         private LevelConfig _curLevelConfig;
         private LevelView _view = default;
@@ -37,11 +40,13 @@ namespace nl.allon.controllers
         private void OnEnable()
         {
             _gameStateEvent.Handler += OnGameStateEvent;
+            _blocksManagerReadyEvent.Handler += OnBlocksManagerReady;
         }
 
         private void OnDisable()
         {
             _gameStateEvent.Handler -= OnGameStateEvent;
+            _blocksManagerReadyEvent.Handler -= OnBlocksManagerReady;
         }
 
         private void OnGameStateEvent(GameManager.GameState state)
@@ -55,13 +60,22 @@ namespace nl.allon.controllers
                     _prepareLevelEvent?.Dispatch(_curLevelConfig);
                     PrepareLevelEvent();
                     break;
+                case GameManager.GameState.RUNNING:
+                    // preparing & setting up the level
+                    Debug.Log("[LevelController] Game has started");
+                    break;
             }
         }
 
         private void PrepareLevelEvent()
         {
             _view.PrepareNewLevel(_curLevelConfig);
-            _view.gameObject.SetActive(true); // MRA do this in view
+        }
+
+        private void OnBlocksManagerReady()
+        {
+            // If the BlocksManager is ready we can dispatch the ready event
+            _levelReadyEvent.Dispatch(_curLevelConfig.LevelNum);
         }
         #endregion
     }
