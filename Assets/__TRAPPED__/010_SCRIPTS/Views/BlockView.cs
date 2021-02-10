@@ -11,6 +11,8 @@ namespace nl.allon.views
         [SerializeField] private AnimationCurve _appearCurve = default;
         private Transform _transform;
         private Vector3 _targetPos = Vector3.zero;
+        private float _appearSpeed = 0.5f; //MRA: obtain this from model/config
+        private float _appearDelay = 0.33f; //MRA: obtain this from model/config
         // public int Index;
         
         private void Awake()
@@ -20,10 +22,10 @@ namespace nl.allon.views
 
         public void Appear(int blockNumber)
         {
-            float delay = blockNumber * 0.75f; // MRA: Magic Number alert
-            
+            float delay = blockNumber * _appearDelay;
+         
             // tween to start position
-            Tween.LocalPosition(_transform, _targetPos, 2f, delay, 
+            Tween.LocalPosition(_transform, _targetPos, _appearSpeed, delay, 
                 _appearCurve, Tween.LoopType.None, null, OnComplete);
         }
 
@@ -34,7 +36,8 @@ namespace nl.allon.views
 
         public void MoveToInitPosition(float height)
         {
-            float posY = (height + 0.01f) * -1f; // add a margin because of z-fighting 
+            // add a margin because of z-fighting 
+            float posY = (height * -1f) + 0.01f; // MRA: Magic NUmber Alert!
             _transform.Translate(0, posY, 0);
         }
     }

@@ -43,7 +43,7 @@ namespace nl.allon.managers
 
         private void OnPrepareLevelEvent(LevelConfig config)
         {
-            Debug.Log("[BM] Prepare level " + config.LevelName);
+            // Debug.Log("[BM] Prepare level " + config.LevelName);
 
             // assign values
             _minColumnSpeed = config.MinColumnSpeed;

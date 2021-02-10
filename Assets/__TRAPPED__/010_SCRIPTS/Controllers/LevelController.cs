@@ -54,7 +54,7 @@ namespace nl.allon.controllers
             Debug.Log("[LevelController] new game state: " + state.ToString());
             switch (state)
             {
-                case GameManager.GameState.LOADING_LEVEL:
+                case GameManager.GameState.LEVEL_INTRO:
                     // preparing & setting up the level
                     _curLevelConfig = _model.GetCurrentLevel();
                     _prepareLevelEvent?.Dispatch(_curLevelConfig);
@@ -62,7 +62,7 @@ namespace nl.allon.controllers
                     break;
                 case GameManager.GameState.RUNNING:
                     // preparing & setting up the level
-                    Debug.Log("[LevelController] Game has started");
+                    // Debug.Log("[LevelController] Game has started");
                     break;
             }
         }
