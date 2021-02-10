@@ -27,10 +27,10 @@ public class SkullTower_State : State
     {
         Tween.Color (_skullMaterial, Color.yellow, .25f, 0);
         _arrow.Move (_skull.position);
-        InputManager.Instance.OnUpPressed += HandleUpPressed;
-        InputManager.Instance.OnDownPressed += HandleDownPressed;
-        InputManager.Instance.OnLeftPressed += HandleLeftPressed;
-        InputManager.Instance.OnRightPressed += HandleRightPressed;
+        InputManagerPP.Instance.OnUpPressed += HandleUpPressed;
+        InputManagerPP.Instance.OnDownPressed += HandleDownPressed;
+        InputManagerPP.Instance.OnLeftPressed += HandleLeftPressed;
+        InputManagerPP.Instance.OnRightPressed += HandleRightPressed;
     }
 
     void OnDisable ()
@@ -39,10 +39,10 @@ public class SkullTower_State : State
         if (_shuttingDown) return;
 
         Tween.Color (_skullMaterial, _initialSkullColor, .25f, 0);
-        InputManager.Instance.OnUpPressed -= HandleUpPressed;
-        InputManager.Instance.OnDownPressed -= HandleDownPressed;
-        InputManager.Instance.OnLeftPressed -= HandleLeftPressed;
-        InputManager.Instance.OnRightPressed -= HandleRightPressed;
+        InputManagerPP.Instance.OnUpPressed -= HandleUpPressed;
+        InputManagerPP.Instance.OnDownPressed -= HandleDownPressed;
+        InputManagerPP.Instance.OnLeftPressed -= HandleLeftPressed;
+        InputManagerPP.Instance.OnRightPressed -= HandleRightPressed;
     }
 
     //Event Handlers:

@@ -22,7 +22,8 @@ namespace nl.allon.controllers
         [SerializeField] private LevelModel _model = default;
         
         private LevelConfig _curLevelConfig;
-        private LevelView _view = default;
+        private LevelView _view = null;
+        private LevelInfoView _infoView = null;
 
         protected override void Awake()
         {
@@ -54,11 +55,11 @@ namespace nl.allon.controllers
             Debug.Log("[LevelController] new game state: " + state.ToString());
             switch (state)
             {
-                case GameManager.GameState.LEVEL_INTRO:
+                case GameManager.GameState.PREPARE_LEVEL:
                     // preparing & setting up the level
-                    _curLevelConfig = _model.GetCurrentLevel();
-                    _prepareLevelEvent?.Dispatch(_curLevelConfig);
-                    PrepareLevelEvent();
+                    PrepareLevel();
+                    break;
+                case GameManager.GameState.LEVEL_INTRO:
                     break;
                 case GameManager.GameState.RUNNING:
                     // preparing & setting up the level
@@ -67,15 +68,35 @@ namespace nl.allon.controllers
             }
         }
 
-        private void PrepareLevelEvent()
-        {
-            _view.PrepareNewLevel(_curLevelConfig);
-        }
+        // private void PrepareLevelEvent()
+        // {
+        //     _view.PrepareNewLevel(_curLevelConfig);
+        // }
 
         private void OnBlocksManagerReady()
         {
             // If the BlocksManager is ready we can dispatch the ready event
             _levelReadyEvent.Dispatch(_curLevelConfig.LevelNum);
+        }
+        #endregion
+        
+        #region HELPER METHODS
+        private void PrepareLevel()
+        {
+            _curLevelConfig = _model.GetCurrentLevel();
+            _prepareLevelEvent?.Dispatch(_curLevelConfig);
+           
+            if (_infoView == null)
+            {
+                Debug.Log("[LC] ___ creating LevelInfoView ____");
+                _infoView = Instantiate(_curLevelConfig.LevelInfoPrefab, transform).
+                    GetComponent<LevelInfoView>();
+            }
+            
+            _infoView.SetInfo(_curLevelConfig);
+            
+            _view.PrepareNewLevel(_curLevelConfig);
+            // PrepareLevelEvent();
         }
         #endregion
     }

@@ -11,6 +11,7 @@ namespace nl.allon.configs
         public int LevelNum = 0;
         public string LevelName = string.Empty;
         public GameObject EnvironmentPrefab = default;
+        public GameObject LevelInfoPrefab = default;
         
         // Blocks
         public GameObject BlockControllerPrefab = default;

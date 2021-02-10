@@ -56,7 +56,7 @@ namespace nl.allon.managers
         {
             switch (state)
             {
-                case GameManager.GameState.RUNNING:
+                case GameManager.GameState.LEVEL_INTRO:
                     // Blocks should appear
                     StartBlocks();
                     break;

@@ -12,7 +12,7 @@ namespace nl.allon.managers
     {
         public enum GameState
         {
-            BOOT, 
+            BOOT,
             LOADING_SCENE,
             MENU,
             PREPARE_LEVEL,
@@ -32,6 +32,8 @@ namespace nl.allon.managers
         [SerializeField] private SceneEvent _loadSceneEvent = default;
         [SerializeField] private SimpleEvent _mainMenuContinueEvent = default;
         [SerializeField] private IntEvent _levelReadyEvent = default;
+        [SerializeField] private HandSimpleInputEvent _activatePerformedEvent = default;
+
         private void Start()
         {
             DontDestroyOnLoad(this);
@@ -85,7 +87,7 @@ namespace nl.allon.managers
             }
 
             _gameStateEvent?.Dispatch(_currentGameState);
-            Debug.Log("[GM] cur game state: "+_currentGameState.ToString());
+            Debug.Log("[GM] cur game state: " + _currentGameState.ToString());
         }
 
         #region EVENTS
@@ -95,11 +97,13 @@ namespace nl.allon.managers
             _obtainDeviceDataEvent.Handler += OnObtainDeviceDataEvent;
             _mainMenuContinueEvent.Handler += OnContinueFromMainMenu;
             _levelReadyEvent.Handler += OnLevelReadyEvent;
+            _activatePerformedEvent.Handler += OnActivatePerformed;
         }
 
         private void OnContinueFromMainMenu()
         {
             Debug.Log("[GM] Continue from main menu");
+            // ChangeState(GameState.LEVEL_INTRO);
             ChangeState(GameState.PREPARE_LEVEL);
         }
 
@@ -108,18 +112,30 @@ namespace nl.allon.managers
             _sceneLoadedEvent.Handler -= OnSceneLoaded;
             _mainMenuContinueEvent.Handler -= OnContinueFromMainMenu;
             _levelReadyEvent.Handler -= OnLevelReadyEvent;
+            _activatePerformedEvent.Handler -= OnActivatePerformed;
+        }
+
+        private void OnActivatePerformed(InputManager.Hand hand)
+        {
+                Debug.Log("[GM] ______ Trigger by " + hand.ToString());
+            // During intro we wait for Trigger to Press
+            if (_currentGameState == GameState.LEVEL_INFO)
+            {
+                // Blocks can be shown now
+                ChangeState(GameState.LEVEL_INTRO);
+            }
         }
 
         private void OnLevelReadyEvent(int levelNumber)
         {
             Debug.Log("[GM] Level Ready: " + levelNumber);
-            ChangeState(GameState.LEVEL_INFO); // MRA -> for now we go directly to RUNNING
-            ChangeState(GameState.RUNNING);
+            ChangeState(GameState.LEVEL_INFO);
         }
 
         private void OnSceneLoaded(SCENE_NAME sceneName)
         {
-            switch (sceneName) {
+            switch (sceneName)
+            {
                 case SCENE_NAME.Game:
                     // We have no Menu State at this moment, so we go to the Level Info State
                     ChangeState(GameState.MENU);
@@ -132,9 +148,9 @@ namespace nl.allon.managers
         private void OnObtainDeviceDataEvent()
         {
             _obtainDeviceDataEvent.Handler -= OnObtainDeviceDataEvent;
-            
+
             ChangeState(GameState.LOADING_SCENE);
-            
+
             // After obtaining the Device Data we are ready to load the menu scene
             // if we have one, else we load the Game scene
             _loadSceneEvent?.Dispatch(SCENE_NAME.Game);

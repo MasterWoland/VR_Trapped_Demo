@@ -6,7 +6,7 @@ using System;
 
 namespace Pixelplacement
 {
-    public class InputManager : Singleton<InputManager>
+    public class InputManagerPP : Singleton<InputManagerPP>
     {
         //Events:
         public event Action OnLeftPressed;
