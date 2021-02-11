@@ -33,7 +33,7 @@ namespace nl.allon.managers
         [SerializeField] private SimpleEvent _mainMenuContinueEvent = default;
         [SerializeField] private IntEvent _levelReadyEvent = default;
         [SerializeField] private HandSimpleInputEvent _activatePerformedEvent = default;
-
+        [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default; 
         private void Start()
         {
             DontDestroyOnLoad(this);
@@ -98,6 +98,7 @@ namespace nl.allon.managers
             _mainMenuContinueEvent.Handler += OnContinueFromMainMenu;
             _levelReadyEvent.Handler += OnLevelReadyEvent;
             _activatePerformedEvent.Handler += OnActivatePerformed;
+            _blocksAppearCompleteEvent.Handler += OnBlocksHaveAllAppeared;
         }
 
         private void OnContinueFromMainMenu()
@@ -113,14 +114,22 @@ namespace nl.allon.managers
             _mainMenuContinueEvent.Handler -= OnContinueFromMainMenu;
             _levelReadyEvent.Handler -= OnLevelReadyEvent;
             _activatePerformedEvent.Handler -= OnActivatePerformed;
+            _blocksAppearCompleteEvent.Handler -= OnBlocksHaveAllAppeared;
+        }
+
+        private void OnBlocksHaveAllAppeared()
+        {
+            // MRA: All the blocks have animated into position, the game can start
+            // MRA: alternatively we can start the game after the score view has appeared completely
+            ChangeState(GameState.RUNNING);
         }
 
         private void OnActivatePerformed(InputManager.Hand hand)
         {
-                Debug.Log("[GM] ______ Trigger by " + hand.ToString());
             // During intro we wait for Trigger to Press
             if (_currentGameState == GameState.LEVEL_INFO)
             {
+                Debug.Log("[GM] ______ Trigger by " + hand.ToString());
                 // Blocks can be shown now
                 ChangeState(GameState.LEVEL_INTRO);
             }

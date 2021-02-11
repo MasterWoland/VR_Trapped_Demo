@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1a5a4612ef71648a14b04eb4fa9dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blockAppearCompleteEvent: {fileID: 11400000, guid: 8bcf02f563d737946a00ec14ede7fc23, type: 2}
   _appearCurve:
     serializedVersion: 2
     m_Curve:

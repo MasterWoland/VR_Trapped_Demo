@@ -50,3 +50,4 @@ MonoBehaviour:
   _mainMenuContinueEvent: {fileID: 11400000, guid: d05ec1448132a0b45976b1eb1f1c7c82, type: 2}
   _levelReadyEvent: {fileID: 11400000, guid: a737483f38d857f4681d85c4bf15b34a, type: 2}
   _activatePerformedEvent: {fileID: 11400000, guid: 4b0e0765253067a43972b45c2c800b58, type: 2}
+  _blocksAppearCompleteEvent: {fileID: 11400000, guid: 8bcf02f563d737946a00ec14ede7fc23, type: 2}
