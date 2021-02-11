@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using nl.allon.controllers;
-using nl.allon.events;
 using Pixelplacement;
 using UnityEngine;
 
@@ -28,7 +24,7 @@ namespace nl.allon.views
             float delay = blockNumber * _appearDelay;
          
             // tween to start position
-            Tween.LocalPosition(_transform, _targetPos, _appearSpeed, delay, 
+            Tween.LocalPosition(_transform, _targetPos, _appearSpeed, delay,
                 _appearCurve, Tween.LoopType.None, null, OnComplete);
         }
      

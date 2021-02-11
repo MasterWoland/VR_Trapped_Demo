@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using nl.allon.managers;
 using UnityEngine;
 

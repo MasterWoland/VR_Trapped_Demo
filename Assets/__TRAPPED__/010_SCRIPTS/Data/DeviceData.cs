@@ -1,27 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR;
 
-[CreateAssetMenu(fileName = "DeviceData", menuName = "SO/DeviceData")]
-public class DeviceData : ScriptableObject
+namespace nl.allon.data
 {
-    private string _deviceName = string.Empty;
-    public string DeviceName { get { return _deviceName; } }
-  
-    public bool TryObtainDeviceName()
+    [CreateAssetMenu(fileName = "DeviceData", menuName = "SO/DeviceData")]
+    public class DeviceData : ScriptableObject
     {
-        _deviceName = XRSettings.loadedDeviceName;
+        private string _deviceName = string.Empty;
+        public string DeviceName { get { return _deviceName; } }
 
-        if (string.IsNullOrEmpty(_deviceName))
+        public bool TryObtainDeviceName()
         {
-            Debug.LogError("[DeviceData] no XR device found.");
-            return false;
-        }
-        else
-        {
-            Debug.Log("[DeviceData] XR device = " + _deviceName);
-            return true;
+            _deviceName = XRSettings.loadedDeviceName;
+
+            if (string.IsNullOrEmpty(_deviceName))
+            {
+                Debug.LogError("[DeviceData] no XR device found.");
+                return false;
+            }
+            else
+            {
+                Debug.Log("[DeviceData] XR device = " + _deviceName);
+                return true;
+            }
         }
     }
 }

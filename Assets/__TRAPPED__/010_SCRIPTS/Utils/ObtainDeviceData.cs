@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using nl.allon.data;
 using nl.allon.events;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ namespace nl.allon.utils
             yield return _currentCoroutine;
 
             _deviceDataObtainedEvent.Dispatch();
-            Destroy(this.gameObject); // we no longer need this
+            Destroy(this.gameObject); // we no longer need this object
         }
        
         // MRA: the only data we are storing right now is the Device Name

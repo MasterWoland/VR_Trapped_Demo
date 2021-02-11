@@ -34,7 +34,6 @@ namespace nl.allon.controllers
         private void Start()
         {
             _view = Instantiate(new GameObject("LevelView"), transform).AddComponent<LevelView>();
-            _view.gameObject.SetActive(false); //MRA do this in view
         }
 
         #region EVENTS
