@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using nl.allon.events;
 using nl.allon.managers;
 using nl.allon.views;
@@ -30,14 +27,18 @@ namespace nl.allon.controllers
         {
             _gameStateEvent.Handler += OnGameStateEvent;
         }
-
+        
+        private void OnDisable()
+        {
+            _gameStateEvent.Handler -= OnGameStateEvent;
+        }
+        
         private void OnGameStateEvent(GameManager.GameState state)
         {
             switch (state)
             {
                 case GameManager.GameState.MENU:
                     _isMenuActive = true;
-                    Debug.Log("[MENU] Activate Menu "+_isMenuActive);
                     break;
                 default:
                     if (_isMenuActive)

@@ -30,7 +30,6 @@ namespace nl.allon.models
             {
                 // MRA: for now we return to the first level after all levels are played
                 // MRA: we may want to change this
-
                 Debug.LogWarning("[LevelModel] All levels are played. We return to the first level now.");
                 Reset();
             }

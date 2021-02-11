@@ -34,14 +34,15 @@ namespace nl.allon.managers
 		}
 
 		#region LOADING
-		// public void LoadScene(SCENE_NAME sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
-		// {
-		// 	// When using SceneManager.LoadScene, the loading does not happen immediately, it completes in the next frame.
-		// 	// This semi-asynchronous behavior can cause frame stuttering and can be confusing because load does not complete immediately.
-		// 	
-		// 	SceneManager.LoadScene(sceneName.ToString(), mode);
-		// 	CurrentSceneName = sceneName;
-		// }
+		// MRA: This method is currently not in use, check later if we want to keep it
+		public void LoadScene(SCENE_NAME sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
+		{
+			// When using SceneManager.LoadScene, the loading does not happen immediately, it completes in the next frame.
+			// This semi-asynchronous behavior can cause frame stuttering and can be confusing because load does not complete immediately.
+			
+			SceneManager.LoadScene(sceneName.ToString(), mode);
+			CurrentSceneName = sceneName;
+		}
 
 		private void LoadSceneAsync(SCENE_NAME sceneName, LoadSceneMode mode = LoadSceneMode.Additive)
 		{
@@ -71,7 +72,6 @@ namespace nl.allon.managers
 					// the new scene has been loaded
 					// MRA: perform a state change
 
-					//Debug.Log("[SceneLoadManager] Dispatching event: scene has finished loading.");
 					CurrentSceneName = _loadingScene;
 					_sceneLoadedEvent?.Dispatch(CurrentSceneName);
 				}
@@ -110,7 +110,6 @@ namespace nl.allon.managers
 
 		private void OnLoadScene(SCENE_NAME sceneName)
 		{
-			// Debug.Log("Going to load: "+sceneName.ToString());
 			LoadSceneAsync(sceneName, LoadSceneMode.Single);
 		}
 		#endregion

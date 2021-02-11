@@ -34,7 +34,6 @@ namespace nl.allon.controllers
         private void Start()
         {
             _view = Instantiate(new GameObject("LevelView"), transform).AddComponent<LevelView>();
-            _view.gameObject.SetActive(false); //MRA do this in view
         }
 
         #region EVENTS
@@ -52,7 +51,6 @@ namespace nl.allon.controllers
 
         private void OnGameStateEvent(GameManager.GameState state)
         {
-            Debug.Log("[LevelController] new game state: " + state.ToString());
             switch (state)
             {
                 case GameManager.GameState.PREPARE_LEVEL:
@@ -60,18 +58,13 @@ namespace nl.allon.controllers
                     PrepareLevel();
                     break;
                 case GameManager.GameState.LEVEL_INTRO:
+                    // Remove LevelInfo
+                    _infoView.Hide();
                     break;
-                case GameManager.GameState.RUNNING:
-                    // preparing & setting up the level
-                    // Debug.Log("[LevelController] Game has started");
+                default:
                     break;
             }
         }
-
-        // private void PrepareLevelEvent()
-        // {
-        //     _view.PrepareNewLevel(_curLevelConfig);
-        // }
 
         private void OnBlocksManagerReady()
         {
@@ -88,15 +81,13 @@ namespace nl.allon.controllers
            
             if (_infoView == null)
             {
-                Debug.Log("[LC] ___ creating LevelInfoView ____");
-                _infoView = Instantiate(_curLevelConfig.LevelInfoPrefab, transform).
-                    GetComponent<LevelInfoView>();
+                _infoView = Instantiate(_curLevelConfig.LevelInfoPrefab, transform).GetComponent<LevelInfoView>();
             }
             
             _infoView.SetInfo(_curLevelConfig);
+            _infoView.Appear();
             
             _view.PrepareNewLevel(_curLevelConfig);
-            // PrepareLevelEvent();
         }
         #endregion
     }

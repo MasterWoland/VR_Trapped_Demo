@@ -1,18 +1,14 @@
-using nl.allon.configs;
 using Pixelplacement;
 using TMPro;
 using UnityEngine;
 
 namespace nl.allon.views
 {
-    public class LevelInfoView : MonoBehaviour
+    public class ScoreView : MonoBehaviour
     {
         [SerializeField] private Canvas _canvas = null;
-        [SerializeField] private TextMeshProUGUI _levelNumText = null;
-        [SerializeField] private TextMeshProUGUI _levelNameText = null;
         [SerializeField] private CanvasGroup _canvasGroup = null;
-        private int _levelNum;
-        private string _levelName;
+        [SerializeField] private TextMeshProUGUI _scoreText = default;
 
         private void Awake()
         {
@@ -22,7 +18,7 @@ namespace nl.allon.views
         private void Start()
         {
             Camera cam = Camera.main;
-            if (cam == null) Debug.LogError("[LevelInfoView] No Main Camera found");
+            if (cam == null) Debug.LogError("[ScoreView] No Main Camera found");
             else _canvas.worldCamera = cam;
         }
         
@@ -41,15 +37,6 @@ namespace nl.allon.views
         private void OnUpdateFade(float alpha)
         {
             _canvasGroup.alpha = alpha;
-        }
-
-        public void SetInfo(LevelConfig config)
-        {
-            _levelNum = config.LevelNum;
-            _levelName = config.LevelName;
-
-            _levelNumText.text = _levelNum.ToString("00");
-            _levelNameText.text = _levelName.ToString();
         }
     }
 }

@@ -17,13 +17,16 @@ namespace nl.allon.managers
     public class BlocksManager : BaseSingleton<BlocksManager>
     {
         [SerializeField] private LevelConfigEvent _prepareLevelEvent = default;
-        [SerializeField] private SimpleEvent _blocksManagerReadyEvent = default;
+        [SerializeField] private SimpleEvent _blocksAreSetupEvent = default;
         [SerializeField] private GameStateEvent _gameStateEvent = default;
+        [SerializeField] private SimpleEvent _blockInPositionEvent = default;
+        [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
         
         private Transform _transform;
         private Transform[] _columns;
         private BlockController[] _blockControllers;
         private float _minColumnSpeed, _maxColumnSpeed;
+        private int _numBlocksInPosition = 0;
 
         private const string COLUMN_STRING = "Column_";
         private const string BLOCK_STRING = "Block_";
@@ -32,19 +35,30 @@ namespace nl.allon.managers
         private void OnEnable()
         {
             _transform = this.transform;
-            _prepareLevelEvent.Handler += OnPrepareLevelEvent;
-            _gameStateEvent.Handler += OnGameStateChangeEvent;
+            _prepareLevelEvent.Handler += OnPrepareLevel;
+            _gameStateEvent.Handler += OnGameStateChange;
+            _blockInPositionEvent.Handler += OnBlockInPosition;
         }
 
         private void OnDisable()
         {
-            _prepareLevelEvent.Handler -= OnPrepareLevelEvent;
+            _prepareLevelEvent.Handler -= OnPrepareLevel;
+            _gameStateEvent.Handler -= OnGameStateChange;
+            _blockInPositionEvent.Handler -= OnBlockInPosition;
         }
 
-        private void OnPrepareLevelEvent(LevelConfig config)
+        private void OnBlockInPosition()
         {
-            // Debug.Log("[BM] Prepare level " + config.LevelName);
+            _numBlocksInPosition++;
+            if (_numBlocksInPosition >= _blockControllers.Length)
+            {
+                _blocksAppearCompleteEvent?.Dispatch();
+                _numBlocksInPosition = 0; // MRA: reset value right away
+            }
+        }
 
+        private void OnPrepareLevel(LevelConfig config)
+        {
             // assign values
             _minColumnSpeed = config.MinColumnSpeed;
             _maxColumnSpeed = config.MaxColumnSpeed;
@@ -52,7 +66,7 @@ namespace nl.allon.managers
             SetupBlockColumns(config);
         }
         
-        private void OnGameStateChangeEvent(GameManager.GameState state)
+        private void OnGameStateChange(GameManager.GameState state)
         {
             switch (state)
             {
@@ -66,7 +80,6 @@ namespace nl.allon.managers
         private void StartBlocks()
         {
             int numBlocks = _blockControllers.Length;
-            // float delayMultiplier = 0.2f;
             
             for (int i = 0; i < numBlocks; i++)
             {
@@ -131,7 +144,7 @@ namespace nl.allon.managers
                 }
             }
             
-            _blocksManagerReadyEvent.Dispatch();
+            _blocksAreSetupEvent.Dispatch();
         }
         #endregion
     }

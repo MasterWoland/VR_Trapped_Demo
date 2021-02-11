@@ -23,7 +23,7 @@ namespace nl.allon.managers
         }
 
         private GameState _currentGameState = GameState.BOOT;
-        public GameState CurrentGameState { get { return _currentGameState; } }
+        // private GameState CurrentGameState { get { return _currentGameState; } }
 
         // Events
         [SerializeField] private SimpleEvent _obtainDeviceDataEvent = default;
@@ -33,12 +33,14 @@ namespace nl.allon.managers
         [SerializeField] private SimpleEvent _mainMenuContinueEvent = default;
         [SerializeField] private IntEvent _levelReadyEvent = default;
         [SerializeField] private HandSimpleInputEvent _activatePerformedEvent = default;
+        [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
 
         private void Start()
         {
             DontDestroyOnLoad(this);
         }
 
+        #region STATE CHANGE
         private void ChangeState(GameState toGameState)
         {
             GameState fromGameState = _currentGameState;
@@ -66,9 +68,6 @@ namespace nl.allon.managers
                 case GameState.LEVEL_INFO:
                     // MRA: Showing info to the player before the level can be played					
                     _currentGameState = GameState.LEVEL_INFO;
-                    // listen for user input
-                    // _leftTriggerDownEvent.Handler += OnTriggerDown;
-                    // _rightTriggerDownEvent.Handler += OnTriggerDown;
                     break;
                 case GameState.LEVEL_INTRO:
                     // MRA: Blocks appear and ambience arises before the actual gameplay starts
@@ -89,8 +88,9 @@ namespace nl.allon.managers
             _gameStateEvent?.Dispatch(_currentGameState);
             Debug.Log("[GM] cur game state: " + _currentGameState.ToString());
         }
+        #endregion
 
-        #region EVENTS
+        #region EVENT SUBSCRIPTIONS
         private void OnEnable()
         {
             _sceneLoadedEvent.Handler += OnSceneLoaded;
@@ -98,13 +98,7 @@ namespace nl.allon.managers
             _mainMenuContinueEvent.Handler += OnContinueFromMainMenu;
             _levelReadyEvent.Handler += OnLevelReadyEvent;
             _activatePerformedEvent.Handler += OnActivatePerformed;
-        }
-
-        private void OnContinueFromMainMenu()
-        {
-            Debug.Log("[GM] Continue from main menu");
-            // ChangeState(GameState.LEVEL_INTRO);
-            ChangeState(GameState.PREPARE_LEVEL);
+            _blocksAppearCompleteEvent.Handler += OnBlocksHaveAllAppeared;
         }
 
         private void OnDisable()
@@ -113,25 +107,11 @@ namespace nl.allon.managers
             _mainMenuContinueEvent.Handler -= OnContinueFromMainMenu;
             _levelReadyEvent.Handler -= OnLevelReadyEvent;
             _activatePerformedEvent.Handler -= OnActivatePerformed;
+            _blocksAppearCompleteEvent.Handler -= OnBlocksHaveAllAppeared;
         }
+        #endregion
 
-        private void OnActivatePerformed(InputManager.Hand hand)
-        {
-                Debug.Log("[GM] ______ Trigger by " + hand.ToString());
-            // During intro we wait for Trigger to Press
-            if (_currentGameState == GameState.LEVEL_INFO)
-            {
-                // Blocks can be shown now
-                ChangeState(GameState.LEVEL_INTRO);
-            }
-        }
-
-        private void OnLevelReadyEvent(int levelNumber)
-        {
-            Debug.Log("[GM] Level Ready: " + levelNumber);
-            ChangeState(GameState.LEVEL_INFO);
-        }
-
+        #region EVENT HANDLERS
         private void OnSceneLoaded(SCENE_NAME sceneName)
         {
             switch (sceneName)
@@ -154,6 +134,33 @@ namespace nl.allon.managers
             // After obtaining the Device Data we are ready to load the menu scene
             // if we have one, else we load the Game scene
             _loadSceneEvent?.Dispatch(SCENE_NAME.Game);
+        }
+
+        private void OnContinueFromMainMenu()
+        {
+            ChangeState(GameState.PREPARE_LEVEL);
+        }
+
+        private void OnLevelReadyEvent(int levelNumber)
+        {
+            ChangeState(GameState.LEVEL_INFO);
+        }
+
+        private void OnActivatePerformed(InputManager.Hand hand)
+        {
+            // During intro we wait for Trigger to Press
+            if (_currentGameState == GameState.LEVEL_INFO)
+            {
+                // Blocks can be shown now
+                ChangeState(GameState.LEVEL_INTRO);
+            }
+        }
+
+        private void OnBlocksHaveAllAppeared()
+        {
+            // MRA: All the blocks have animated into position, the game can start
+            // MRA: alternatively we can start the game after the score view has appeared completely
+            ChangeState(GameState.RUNNING);
         }
         #endregion
     }
