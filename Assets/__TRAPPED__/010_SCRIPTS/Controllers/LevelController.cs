@@ -17,7 +17,7 @@ namespace nl.allon.controllers
         [SerializeField] private GameStateEvent _gameStateEvent = default;
         [SerializeField] private IntEvent _levelReadyEvent = default;
         [SerializeField] private LevelConfigEvent _prepareLevelEvent = default;
-        [SerializeField] private SimpleEvent _blocksManagerReadyEvent = default;
+        [SerializeField] private SimpleEvent _blocksAreSetupEvent = default;
         
         [SerializeField] private LevelModel _model = default;
         
@@ -40,13 +40,13 @@ namespace nl.allon.controllers
         private void OnEnable()
         {
             _gameStateEvent.Handler += OnGameStateEvent;
-            _blocksManagerReadyEvent.Handler += OnBlocksManagerReady;
+            _blocksAreSetupEvent.Handler += OnBlocksAreSetup;
         }
 
         private void OnDisable()
         {
             _gameStateEvent.Handler -= OnGameStateEvent;
-            _blocksManagerReadyEvent.Handler -= OnBlocksManagerReady;
+            _blocksAreSetupEvent.Handler -= OnBlocksAreSetup;
         }
 
         private void OnGameStateEvent(GameManager.GameState state)
@@ -66,10 +66,11 @@ namespace nl.allon.controllers
             }
         }
 
-        private void OnBlocksManagerReady()
+        private void OnBlocksAreSetup()
         {
             // If the BlocksManager is ready we can dispatch the ready event
             _levelReadyEvent.Dispatch(_curLevelConfig.LevelNum);
+            Debug.Log("[LC] OnBlocksManager Ready");
         }
         #endregion
         

@@ -85,8 +85,8 @@ namespace nl.allon.managers
                     break;
             }
 
-            _gameStateEvent?.Dispatch(_currentGameState);
             Debug.Log("[GM] cur game state: " + _currentGameState.ToString());
+            _gameStateEvent?.Dispatch(_currentGameState);
         }
         #endregion
 

@@ -46,5 +46,5 @@ MonoBehaviour:
   _gameStateEvent: {fileID: 11400000, guid: fc085e7af99ac0a44abc1fd9c6b08830, type: 2}
   _levelReadyEvent: {fileID: 11400000, guid: a737483f38d857f4681d85c4bf15b34a, type: 2}
   _prepareLevelEvent: {fileID: 11400000, guid: 450e6ad2027bd0c46993179737b1f2c4, type: 2}
-  _blocksManagerReadyEvent: {fileID: 11400000, guid: 24ba145814a358a4595b79ffca18fb47, type: 2}
+  _blocksAreSetupEvent: {fileID: 11400000, guid: 24ba145814a358a4595b79ffca18fb47, type: 2}
   _model: {fileID: 11400000, guid: 0fdb73fffa91d064884aba251c87d854, type: 2}

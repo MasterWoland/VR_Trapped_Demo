@@ -72,12 +72,12 @@ namespace nl.allon.managers
             {
                 case GameManager.GameState.LEVEL_INTRO:
                     // Blocks should appear
-                    StartBlocks();
+                    ShowBlocks();
                     break;
             }
         }
 
-        private void StartBlocks()
+        private void ShowBlocks()
         {
             int numBlocks = _blockControllers.Length;
             
