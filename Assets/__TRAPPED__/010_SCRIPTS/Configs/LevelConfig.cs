@@ -20,6 +20,8 @@ namespace nl.allon.configs
         public int NumColumns = 0;
         public float MinColumnSpeed = 0;
         public float MaxColumnSpeed = 0;
+        public float MinColumnMoveDuration = 0;
+        public float MaxColumnMoveDuration = 0;
         public Vector3 TopLeftPosition = default; // MRA: used to calculate all subsequent positions   
         
         public float GetBlockHeight()
