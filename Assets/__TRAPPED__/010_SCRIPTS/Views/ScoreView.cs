@@ -21,6 +21,11 @@ namespace nl.allon.views
             if (cam == null) Debug.LogError("[ScoreView] No Main Camera found");
             else _canvas.worldCamera = cam;
         }
+
+        public void ApplyColor(Color color)
+        {
+            _scoreText.color = color;
+        }
         
         public void Appear()
         {

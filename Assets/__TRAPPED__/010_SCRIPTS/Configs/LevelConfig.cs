@@ -13,6 +13,7 @@ namespace nl.allon.configs
         public GameObject EnvironmentPrefab = default;
         public GameObject LevelInfoPrefab = default;
         public GameObject Deadline = default;
+        public Color ScoreColor = default;
         
         // Blocks
         public GameObject BlockControllerPrefab = default;

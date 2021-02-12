@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19705059bd50f64e9bb55279568b91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prepareLevelEvent: {fileID: 11400000, guid: 450e6ad2027bd0c46993179737b1f2c4, type: 2}
   _blocksAppearCompleteEvent: {fileID: 11400000, guid: 8bcf02f563d737946a00ec14ede7fc23, type: 2}
   _scoreViewPrefab: {fileID: 5014272601874329958, guid: a2c3ca6c71f98c84fae06fcac629ddcc, type: 3}
