@@ -12,6 +12,7 @@ namespace nl.allon.configs
         public string LevelName = string.Empty;
         public GameObject EnvironmentPrefab = default;
         public GameObject LevelInfoPrefab = default;
+        public GameObject Deadline = default;
         
         // Blocks
         public GameObject BlockControllerPrefab = default;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using nl.allon.components;
 using nl.allon.configs;
 using nl.allon.events;
 using nl.allon.managers;
@@ -24,7 +25,8 @@ namespace nl.allon.controllers
         private LevelConfig _curLevelConfig;
         private LevelView _view = null;
         private LevelInfoView _infoView = null;
-
+        private GameObject _deadline = null;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -61,6 +63,10 @@ namespace nl.allon.controllers
                     // Remove LevelInfo
                     _infoView.Hide();
                     break;
+                case GameManager.GameState.RUNNING:
+                    // activate deadline 
+                    _deadline.SetActive(true);
+                    break;
                 default:
                     break;
             }
@@ -77,6 +83,8 @@ namespace nl.allon.controllers
         #region HELPER METHODS
         private void PrepareLevel()
         {
+            // MRA: maybe we should clean up the deadline from the previous level?
+            
             _curLevelConfig = _model.GetCurrentLevel();
             _prepareLevelEvent?.Dispatch(_curLevelConfig);
            
@@ -89,6 +97,9 @@ namespace nl.allon.controllers
             _infoView.Appear();
             
             _view.PrepareNewLevel(_curLevelConfig);
+
+            _deadline = Instantiate(_curLevelConfig.Deadline, transform);
+            _deadline.SetActive(false);
         }
         #endregion
     }
