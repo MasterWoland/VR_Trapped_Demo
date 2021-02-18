@@ -10,7 +10,7 @@ namespace nl.allon.data
         public enum Platform
         {
             UNKNOWN,
-            QUEST_01,
+            QUEST,
             OCULUS_RIFT,
             HTC_VIVE,
             VALVE_INDEX
@@ -33,7 +33,6 @@ namespace nl.allon.data
             else
             {
                 Debug.Log("[DeviceData] XR device = " + _deviceName);
-                Debug.Log("[DeviceData] XR device = " + SystemInfo.deviceModel);
                 
                 // MRA: we need a more extensive method of determining which platform we are on.
                 // MRA: unfortunately Unity does not offer a good way of doing so currently
@@ -42,7 +41,7 @@ namespace nl.allon.data
                 {
                     if (Application.platform == RuntimePlatform.Android)
                     {
-                        _currentPlatform = Platform.QUEST_01;
+                        _currentPlatform = Platform.QUEST;
                     }
                     else
                     {
