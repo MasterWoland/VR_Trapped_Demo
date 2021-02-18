@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using nl.allon.configs;
 using nl.allon.data;
 using nl.allon.events;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 namespace nl.allon.managers
 {
@@ -12,60 +14,41 @@ namespace nl.allon.managers
     /// </summary>
     public class HandManager : MonoBehaviour
     {
+        public enum Hand
+        {
+            LEFT,
+            RIGHT
+        }
+        public Hand CurrentHand = default;
+
         // Events
         [SerializeField] private GameStateEvent _gameStateEvent = default;
-       
+
         [SerializeField] private DeviceData _deviceData = default;
-        [SerializeField] private GameObject _controllerQuest = default;
-        [SerializeField] private GameObject _controllerRift = default;
-        [SerializeField] private GameObject _controllerVive = default;
-        [SerializeField] private GameObject _controllerIndex = default;
+        [SerializeField] private PlayerConfig _playerConfig = default;
+        [SerializeField] private GameObject _controllerQuestPrefab = default;
+        [SerializeField] private GameObject _controllerRiftPrefab = default;
+        [SerializeField] private GameObject _controllerVivePrefab = default;
+        [SerializeField] private GameObject _controllerIndexPrefab = default;
+        [SerializeField] private GameObject _racketPrefab = default;
 
         private GameObject _controllerGO = null;
-        
+        private GameObject _racketGO = null;
+        private bool _useRacket = false;
+
         private void Awake()
         {
-            Debug.Log("[HandManager] Platform = "+_deviceData.CurrentPlatform);
+            Debug.Log("[HandManager] Platform = " + _deviceData.CurrentPlatform);
             PrepareController();
+            PrepareRacket();
         }
 
-        private void PrepareController()
-        {
-            DeviceData.Platform platform= _deviceData.CurrentPlatform;
-            GameObject go = null;
-            
-            switch (platform)
-            {
-                case DeviceData.Platform.QUEST:
-                    go = _controllerQuest;
-                    break;
-                case DeviceData.Platform.OCULUS_RIFT:
-                    go = _controllerRift;
-                    break;
-                case DeviceData.Platform.HTC_VIVE:
-                    go = _controllerVive;
-                    break;
-                case DeviceData.Platform.VALVE_INDEX:
-                    go = _controllerIndex;
-                    break;
-                default:
-                    Debug.LogError("[HM] No valid platform detected: "+platform);
-                    break;
-            }
-
-            if (go != null)
-            {
-                _controllerGO = Instantiate(go, transform);
-                _controllerGO.SetActive(false);
-            }
-        }
-        
         #region Events
         private void OnEnable()
         {
             _gameStateEvent.Handler += OnGameStateEvent;
         }
-        
+
         private void OnDisable()
         {
             _gameStateEvent.Handler -= OnGameStateEvent;
@@ -78,11 +61,67 @@ namespace nl.allon.managers
                 case GameManager.GameState.MENU:
                     _controllerGO.SetActive(true);
                     break;
+                case GameManager.GameState.PREPARE_LEVEL:
+                    _racketGO.SetActive(_useRacket);
+                    break;
                 default:
                     _controllerGO.SetActive(false);
                     break;
             }
         }
+        #endregion
+
+        #region HELPER METHODS
+        private void PrepareController()
+        {
+            DeviceData.Platform platform = _deviceData.CurrentPlatform;
+            GameObject go = null;
+
+            switch (platform)
+            {
+                case DeviceData.Platform.QUEST:
+                    go = _controllerQuestPrefab;
+                    break;
+                case DeviceData.Platform.OCULUS_RIFT:
+                    go = _controllerRiftPrefab;
+                    break;
+                case DeviceData.Platform.HTC_VIVE:
+                    go = _controllerVivePrefab;
+                    break;
+                case DeviceData.Platform.VALVE_INDEX:
+                    go = _controllerIndexPrefab;
+                    break;
+                default:
+                    Debug.LogError("[HM] No valid platform detected: " + platform);
+                    break;
+            }
+
+            if (go != null)
+            {
+                _controllerGO = Instantiate(go, transform);
+                _controllerGO.SetActive(false);
+            }
+        }
+
+        private void PrepareRacket()
+        {
+            _racketGO = Instantiate(_racketPrefab, transform);
+            _racketGO.SetActive(false);
+
+            if (_playerConfig.UseRightHandForRacket && CurrentHand == Hand.RIGHT)
+            {
+                _useRacket = true;
+            }
+            else if (!_playerConfig.UseRightHandForRacket && CurrentHand == Hand.LEFT)
+            {
+                _useRacket = true;
+            }
+            else
+            {
+                _useRacket = false;
+            }
+        }
+ 
         #endregion
     }
 }
