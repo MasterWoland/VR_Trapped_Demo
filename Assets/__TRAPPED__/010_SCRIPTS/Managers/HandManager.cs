@@ -31,9 +31,11 @@ namespace nl.allon.managers
         [SerializeField] private GameObject _controllerVivePrefab = default;
         [SerializeField] private GameObject _controllerIndexPrefab = default;
         [SerializeField] private GameObject _racketPrefab = default;
-
+        [SerializeField] private GameObject _ballSpawnerPrefab = default;
+        
         private GameObject _controllerGO = null;
         private GameObject _racketGO = null;
+        private GameObject _ballSpawnerGO = null;
         private bool _useRacket = false;
 
         private void Awake()
@@ -41,6 +43,8 @@ namespace nl.allon.managers
             Debug.Log("[HandManager] Platform = " + _deviceData.CurrentPlatform);
             PrepareController();
             PrepareRacket();
+            PrepareBallSpawner();
+            _useRacket = UseRacketInThisHand();
         }
 
         #region Events
@@ -56,6 +60,7 @@ namespace nl.allon.managers
 
         private void OnGameStateEvent(GameManager.GameState state)
         {
+            // MRA: when development progresses, we may need a better way of switching off/on the game objects
             switch (state)
             {
                 case GameManager.GameState.MENU:
@@ -63,6 +68,7 @@ namespace nl.allon.managers
                     break;
                 case GameManager.GameState.PREPARE_LEVEL:
                     _racketGO.SetActive(_useRacket);
+                    _ballSpawnerGO.SetActive(!_useRacket);
                     break;
                 default:
                     _controllerGO.SetActive(false);
@@ -107,21 +113,29 @@ namespace nl.allon.managers
         {
             _racketGO = Instantiate(_racketPrefab, transform);
             _racketGO.SetActive(false);
+        }
 
+        private void PrepareBallSpawner()
+        {
+            _ballSpawnerGO = Instantiate(_ballSpawnerPrefab, transform);
+            _ballSpawnerGO.SetActive(false);
+        }
+
+        private bool UseRacketInThisHand()
+        {
             if (_playerConfig.UseRightHandForRacket && CurrentHand == Hand.RIGHT)
             {
-                _useRacket = true;
+                return true;
             }
             else if (!_playerConfig.UseRightHandForRacket && CurrentHand == Hand.LEFT)
             {
-                _useRacket = true;
+                return true;
             }
             else
             {
-                _useRacket = false;
+                return false;
             }
         }
- 
         #endregion
     }
 }
