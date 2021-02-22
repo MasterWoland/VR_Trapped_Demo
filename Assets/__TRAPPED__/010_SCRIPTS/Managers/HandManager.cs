@@ -111,7 +111,20 @@ namespace nl.allon.managers
 
         private void PrepareRacket()
         {
-            _racketGO = Instantiate(_racketPrefab, transform);
+            // _racketGO = Instantiate(_racketPrefab, transform);
+            _racketGO = Instantiate(_racketPrefab);
+            _racketGO.transform.position = transform.position;
+            _racketGO.transform.rotation = transform.rotation;
+            
+            FixedJoint fixedJoint = gameObject.AddComponent<FixedJoint>();
+            fixedJoint.breakForce = Mathf.Infinity; // 20000; // not infinite, we don't want to move solid objects through solid objects
+            fixedJoint.breakTorque = Mathf.Infinity; // 20000;
+            fixedJoint.connectedBody = _racketGO.GetComponent<Rigidbody>();
+
+            // _racketGO.transform.Translate(_racketSnapPositionOffset, Space.Self);
+            // _racketGO.transform.Rotate(_racketSnapRotationOffset);
+            
+            // fixedJoint.connectedBody = _racketGO.GetComponent<Rigidbody>();
             _racketGO.SetActive(false);
         }
 

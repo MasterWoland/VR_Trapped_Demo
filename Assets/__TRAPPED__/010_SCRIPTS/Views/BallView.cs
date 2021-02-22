@@ -46,7 +46,7 @@ namespace nl.allon.views
             _rigidbody.velocity = velocity;
             _rigidbody.angularVelocity = angularVelocity;
 
-            Debug.LogFormat("Vel: {0}, Ang vel: {1}", velocity, angularVelocity.magnitude);
+            // Debug.LogFormat("Vel: {0}, Ang vel: {1}", velocity, angularVelocity.magnitude);
 
         }
         #endregion
