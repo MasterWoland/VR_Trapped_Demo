@@ -32,7 +32,7 @@ namespace nl.allon.managers
         [SerializeField] private SceneEvent _loadSceneEvent = default;
         [SerializeField] private SimpleEvent _mainMenuContinueEvent = default;
         [SerializeField] private IntEvent _levelReadyEvent = default;
-        [SerializeField] private HandSimpleInputEvent _activatePerformedEvent = default;
+        [SerializeField] private SimpleInputEvent _activatePerformedEvent = default;
         [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
 
         private void Start()
@@ -146,7 +146,7 @@ namespace nl.allon.managers
             ChangeState(GameState.LEVEL_INFO);
         }
 
-        private void OnActivatePerformed(InputManager.Hand hand)
+        private void OnActivatePerformed(Hand hand)
         {
             // During intro we wait for Trigger to Press
             if (_currentGameState == GameState.LEVEL_INFO)

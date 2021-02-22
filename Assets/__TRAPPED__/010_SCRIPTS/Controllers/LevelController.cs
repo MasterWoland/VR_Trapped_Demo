@@ -76,7 +76,6 @@ namespace nl.allon.controllers
         {
             // If the BlocksManager is ready we can dispatch the ready event
             _levelReadyEvent.Dispatch(_curLevelConfig.LevelNum);
-            Debug.Log("[LC] OnBlocksManager Ready");
         }
         #endregion
         
