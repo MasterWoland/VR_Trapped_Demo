@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7233661189293544974}
   - component: {fileID: 7233661189293544975}
+  - component: {fileID: 4861131320200693955}
   m_Layer: 0
   m_Name: BallController
   m_TagString: Untagged
@@ -44,3 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewPrefab: {fileID: 1149914771971880202, guid: f1e306b2f718cde42b2fb4a9dd3c7333, type: 3}
+--- !u!114 &4861131320200693955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233661189293544976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a253ce4c98359949a53a0bb926812dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 5
+  estimateOnAwake: 0

@@ -9,12 +9,14 @@ namespace nl.allon.views
     public class BallView : MonoBehaviour
     {
         private Rigidbody _rigidbody = default;
+        private SphereCollider _collider = default;
         private Vector3 _velocity;
         private Vector3 _angularVelocity;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<SphereCollider>();
 
             Reset();
         }
@@ -23,6 +25,7 @@ namespace nl.allon.views
         {
             _rigidbody.useGravity = false;
             _rigidbody.isKinematic = true;
+            _collider.enabled = false;
         }
 
         private void FixedUpdate()
@@ -46,13 +49,15 @@ namespace nl.allon.views
             gameObject.SetActive(true);
         }
 
-        public void Throw()
+        public void Release(Vector3 velocity, Vector3 angularVelocity)
         {
             _rigidbody.useGravity = true;
             _rigidbody.isKinematic = false;
+            _collider.enabled = true;
+            _rigidbody.velocity = velocity;
+            _rigidbody.angularVelocity = angularVelocity;
 
-            _rigidbody.AddForce(_velocity, ForceMode.Impulse);
-            // _rigidbody.AddTorque(_angularVelocity, ForceMode.Impulse);
+            Debug.LogFormat("Vel: {0}, Ang vel: {1}", velocity, _angularVelocity.magnitude);
 
         }
         #endregion

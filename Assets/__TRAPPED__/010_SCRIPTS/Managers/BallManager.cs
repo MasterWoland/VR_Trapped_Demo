@@ -96,7 +96,7 @@ namespace nl.allon.managers
             // We can throw the ball
 
             _curBallController.transform.localScale *= 3f;
-            _curBallController.Throw();
+            _curBallController.Release();
         }
 
         private void OnGameStateChange(GameManager.GameState state)
