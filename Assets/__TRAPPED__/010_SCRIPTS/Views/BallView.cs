@@ -10,8 +10,6 @@ namespace nl.allon.views
     {
         private Rigidbody _rigidbody = default;
         private SphereCollider _collider = default;
-        private Vector3 _velocity;
-        private Vector3 _angularVelocity;
 
         private void Awake()
         {
@@ -26,22 +24,13 @@ namespace nl.allon.views
             _rigidbody.useGravity = false;
             _rigidbody.isKinematic = true;
             _collider.enabled = false;
-        }
-
-        private void FixedUpdate()
-        {
-            _velocity = _rigidbody.velocity;
-            _angularVelocity = _rigidbody.angularVelocity;
-
-            // Debug.Log("_______velocity = "+_velocity.magnitude);
+            _rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
         }
 
         #region PUBLIC
         public void Hide()
         {
             gameObject.SetActive(false);
-
-            Debug.Log("[View] hiding from view");
         }
 
         public void Show()
@@ -57,7 +46,7 @@ namespace nl.allon.views
             _rigidbody.velocity = velocity;
             _rigidbody.angularVelocity = angularVelocity;
 
-            Debug.LogFormat("Vel: {0}, Ang vel: {1}", velocity, _angularVelocity.magnitude);
+            Debug.LogFormat("Vel: {0}, Ang vel: {1}", velocity, angularVelocity.magnitude);
 
         }
         #endregion

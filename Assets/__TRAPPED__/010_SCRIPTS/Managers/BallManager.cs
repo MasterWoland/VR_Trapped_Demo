@@ -57,9 +57,9 @@ namespace nl.allon.managers
             _gameStateEvent.Handler -= OnGameStateChange;
         }
 
+        // Select = Grip
         private void OnSelectStarted(Hand hand)
         {
-            // Debug.Log("[BM] Select Started");
             // Make ball appear
             if (hand == Hand.LEFT && _useLeftHand)
             {
@@ -70,7 +70,7 @@ namespace nl.allon.managers
             }
             else
             {
-                Debug.Log("WRONG HAND: "+hand);
+                // Wrong Hand
                 return;
             }
 
@@ -81,6 +81,7 @@ namespace nl.allon.managers
             if (_curBallindex >= _ballPool.Length) _curBallindex = 0;
         }
 
+        // Select = Grip
         private void OnSelectCanceled(Hand hand)
         {
             // No action if event comes from the wrong hand
@@ -92,10 +93,6 @@ namespace nl.allon.managers
                 return;
             }
 
-            Debug.Log("[BM] Select Canceled");
-            // We can throw the ball
-
-            _curBallController.transform.localScale *= 3f;
             _curBallController.Release();
         }
 

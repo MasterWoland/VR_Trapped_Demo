@@ -38,8 +38,6 @@ namespace nl.allon.controllers
             // we must unparent this object
             transform.SetParent(transform.root);
             _view.Release(_velocityEstyimator.GetVelocityEstimate(), _velocityEstyimator.GetAngularVelocityEstimate());
-            
-            Debug.Log("[BC] THROW");
         }
     }
 }
