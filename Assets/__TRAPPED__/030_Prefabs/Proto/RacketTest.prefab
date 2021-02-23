@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4529049210122204017}
   - component: {fileID: 4529049210122204031}
   - component: {fileID: 4529049210122204016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tennis_gut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4529049210541898211}
   - component: {fileID: 6425416379722810551}
   - component: {fileID: 5708480804664634962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RacketTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
