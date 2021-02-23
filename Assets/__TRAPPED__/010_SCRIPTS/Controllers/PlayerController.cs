@@ -13,18 +13,29 @@ namespace nl.allon.controllers
     {
         [SerializeField] private PlayerConfig _config = default;
         [SerializeField] private GameObject _racketPrefab = default;
+        [SerializeField] private GameObject _ballManagerPrefab = default;
+
+        [SerializeField] private GameObject _leftHand = default; 
         [SerializeField] private GameObject _rightHand = default;
-        
+
         // Events
         [SerializeField] private BoolEvent _useRightHandForRacketEvent = default;
         [SerializeField] private GameStateEvent _gameStateEvent = default;
-        
+
         private GameObject _racketGO = null;
         private Transform _racketTF = default;
-        
+        private GameObject _ballManagerGO = default;
+        private Transform _ballManagerTF = default;
+        private bool _useRightHandForRacket = true;
+
         private void Awake()
         {
             DontDestroyOnLoad(this);
+
+            CreateRacket();
+            CreateBallManager();
+
+            _useRightHandForRacket = _config.UseRightHandForRacket;
         }
 
         #region EVENTS
@@ -33,6 +44,7 @@ namespace nl.allon.controllers
             _useRightHandForRacketEvent.Handler += OnHandRacketChanged;
             _gameStateEvent.Handler += OnGameStateEvent;
         }
+
         private void OnDisable()
         {
             _useRightHandForRacketEvent.Handler -= OnHandRacketChanged;
@@ -42,59 +54,70 @@ namespace nl.allon.controllers
         private void OnHandRacketChanged(bool boolean)
         {
             _config.SetRacketHand(boolean);
+            _useRightHandForRacket = _config.UseRightHandForRacket;
 
-            Debug.Log("Hand for Racket changed to: use right = "+boolean);
+            Debug.Log("Hand for Racket changed to: use right = " + boolean);
         }
-        
+
         private void OnGameStateEvent(GameManager.GameState state)
         {
-            // MRA: when development progresses, we may need a better way of switching off/on the game objects
             switch (state)
             {
-                // case GameManager.GameState.MENU:
-                //     _controllerGO.SetActive(true);
-                //     break;
                 case GameManager.GameState.PREPARE_LEVEL:
-                    CreateRacket();
-                    AttachRacket();
-                    // _racketGO.SetActive(_useRacket);
-                    // _ballSpawnerGO.SetActive(!_useRacket);
+                    ActivateBallManager();
+                    ActivateRacket();
                     break;
-                // default:
-                //     _controllerGO.SetActive(false);
-                //     break;
             }
         }
+        #endregion
 
+        #region HELPER METHODS
         private void CreateRacket()
         {
-            if (!_racketGO)
-            {
-                _racketGO = Instantiate(_racketPrefab);
-                _racketTF = _racketGO.transform;
-            }
-
-            // Debug.Log("[PC] racket TF pos: "+_racketTF.position);
+            _racketGO = Instantiate(_racketPrefab);
+            _racketTF = _racketGO.transform;
+            _racketGO.SetActive(false);
         }
 
-        private void AttachRacket()
+        private void CreateBallManager()
         {
-            _racketTF.position = _rightHand.transform.localPosition;
-            _racketTF.rotation = _rightHand.transform.localRotation;
+            _ballManagerGO = Instantiate(_ballManagerPrefab);
+            _ballManagerTF = _ballManagerGO.transform;
+            _ballManagerGO.SetActive(false);
+        }
+
+        private void ActivateRacket()
+        {
+            // check for correct hand
+            Transform curTransform = _useRightHandForRacket ? _rightHand.transform : _leftHand.transform;
+
+            _racketTF.position = curTransform.localPosition;
+            _racketTF.rotation = curTransform.localRotation;
 
             // MRA: obtain these values from config
             Vector3 offsetPos = new Vector3(0.003f, -0.028f, -0.011f);
             Vector3 offsetRot = new Vector3(147.236f, -1.686f, 5.468994f);
-
             _racketTF.position += offsetPos;
             _racketTF.Rotate(offsetRot, Space.Self);
-            
-            FixedJoint fx = _rightHand.AddComponent<FixedJoint>();  // TODO: cache FixedJoint (use require component?)
+
+            FixedJoint fx = curTransform.gameObject.AddComponent<FixedJoint>(); // TODO: cache FixedJoint (use require component?)
             fx.breakForce = Mathf.Infinity; // 20000; // not infinite, we don't want to move solid objects through solid objects
             fx.breakTorque = Mathf.Infinity; // 20000;
-            fx.connectedBody = _racketGO.GetComponent<Rigidbody>();
 
-            // Debug.Log("[PC] __ racket attached: "+_racketTF.position.y);
+            _racketGO.SetActive(true);
+
+            fx.connectedBody = _racketGO.GetComponent<Rigidbody>();
+        }
+
+        private void ActivateBallManager()
+        {
+            Transform curTransform = _useRightHandForRacket ? _leftHand.transform : _rightHand.transform;
+
+            _ballManagerTF.SetParent(curTransform);
+            _ballManagerTF.position = curTransform.localPosition;
+            _ballManagerTF.rotation = curTransform.localRotation;
+
+            _ballManagerGO.SetActive(true);
         }
         #endregion
     }

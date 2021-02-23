@@ -490,7 +490,6 @@ MonoBehaviour:
   _controllerRiftPrefab: {fileID: 5191550869875014123, guid: 0efe8147fc0009d4ea3039b2374d927c, type: 3}
   _controllerVivePrefab: {fileID: 6654152787936889342, guid: 61e60013ce1d7d942b8975c98fdf8154, type: 3}
   _controllerIndexPrefab: {fileID: 357722411443781339, guid: aafefdd564a300c4d93806fdc271c41f, type: 3}
-  _ballSpawnerPrefab: {fileID: 3119672123322829090, guid: a44b311dfd239f749bc715ed1643011b, type: 3}
 --- !u!54 &4144264359925941384
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -717,6 +716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: b1848a03c2d3f7746a95e743125fc309, type: 2}
   _racketPrefab: {fileID: 4529049210541898213, guid: 171bcdbe82569ed448492ff3748d144c, type: 3}
+  _ballManagerPrefab: {fileID: 3119672123322829090, guid: a44b311dfd239f749bc715ed1643011b, type: 3}
+  _leftHand: {fileID: 521120255279060922}
   _rightHand: {fileID: 521120253482272966}
   _useRightHandForRacketEvent: {fileID: 11400000, guid: 67559f04d971344419ba6ae99f7a704e, type: 2}
   _gameStateEvent: {fileID: 11400000, guid: fc085e7af99ac0a44abc1fd9c6b08830, type: 2}
@@ -1241,7 +1242,6 @@ MonoBehaviour:
   _controllerRiftPrefab: {fileID: 7523567926693483842, guid: b2ec64201e9ec6c4ba155691307536cb, type: 3}
   _controllerVivePrefab: {fileID: 5928091942230486030, guid: c4b9c875ed967534eb12cd57aeeb1183, type: 3}
   _controllerIndexPrefab: {fileID: 4818293155451206850, guid: 542a6345c56bbcd41b92f421fac57d92, type: 3}
-  _ballSpawnerPrefab: {fileID: 3119672123322829090, guid: a44b311dfd239f749bc715ed1643011b, type: 3}
 --- !u!1 &761438056877963927
 GameObject:
   m_ObjectHideFlags: 0
