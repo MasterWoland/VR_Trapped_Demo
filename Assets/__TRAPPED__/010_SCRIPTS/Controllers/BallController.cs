@@ -11,15 +11,13 @@ namespace nl.allon.controllers
     public class BallController : MonoBehaviour
     {
         [SerializeField] private GameObject _viewPrefab = default;
-        private VelocityEstimator _velocityEstyimator = default;
+        private VelocityEstimator _velocityEstimator = default;
         private BallView _view;
         
         private void Awake()
         {
-            _velocityEstyimator = GetComponent<VelocityEstimator>();
-            
-            // instantiate view
             _view = Instantiate(_viewPrefab, transform).GetComponent<BallView>();
+            _velocityEstimator = GetComponent<VelocityEstimator>();
         }
 
         private void Start()
@@ -30,14 +28,14 @@ namespace nl.allon.controllers
         public void Activate()
         {
             _view.Show();
-            _velocityEstyimator.BeginEstimatingVelocity();
+            _velocityEstimator.BeginEstimatingVelocity();
         }
 
         public void Release()
         {
             // we must unparent this object
             transform.SetParent(transform.root);
-            _view.Release(_velocityEstyimator.GetVelocityEstimate(), _velocityEstyimator.GetAngularVelocityEstimate());
+            _view.Release(_velocityEstimator.GetVelocityEstimate(), _velocityEstimator.GetAngularVelocityEstimate());
         }
     }
 }
