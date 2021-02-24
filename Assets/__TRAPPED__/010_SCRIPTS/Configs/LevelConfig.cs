@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace nl.allon.configs
@@ -16,6 +17,7 @@ namespace nl.allon.configs
         public Color ScoreColor = default;
         
         // Blocks
+        [Header("Blocks")]
         public GameObject BlockControllerPrefab = default;
         public GameObject BlockViewPrefab = default;
         public int NumRows = 0;
@@ -25,6 +27,8 @@ namespace nl.allon.configs
         public float MinColumnMoveDuration = 0;
         public float MaxColumnMoveDuration = 0;
         public Vector3 TopLeftPosition = default; // MRA: used to calculate all subsequent positions   
+        public int BlockStartHealth = 100;
+        public float BlockImpactMultiplier = 0.05f; // Multiplier for the velocity square magnitude. 10000 is a high value for this.
         
         public float GetBlockHeight()
         {

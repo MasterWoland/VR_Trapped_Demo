@@ -36,6 +36,13 @@ namespace nl.allon.controllers
             // we must unparent this object
             transform.SetParent(transform.root);
             _view.Release(_velocityEstimator.GetVelocityEstimate(), _velocityEstimator.GetAngularVelocityEstimate());
+            Invoke(nameof(Remove), 4f); //MRA: from config!
+        }
+
+        private void Remove()
+        {
+            _view.Reset();
+            _view.Hide();
         }
     }
 }

@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1a5a4612ef71648a14b04eb4fa9dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blockImpactEvent: {fileID: 11400000, guid: 2dc2e90e1628cb746ba388ca3b742250, type: 2}
   _appearCurve:
     serializedVersion: 2
     m_Curve:

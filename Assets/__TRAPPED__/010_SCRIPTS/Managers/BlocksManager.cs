@@ -26,6 +26,8 @@ namespace nl.allon.managers
         [SerializeField] private SimpleEvent _blockInPositionEvent = default;
         [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
 
+        private LevelConfig _levelConfig = null;
+        
         // columns setup
         private Transform _transform;
         private Transform[] _columns;
@@ -85,13 +87,15 @@ namespace nl.allon.managers
 
         private void OnPrepareLevel(LevelConfig config)
         {
-            // assign values
-            _minColumnMoveSpeed = config.MinColumnSpeed;
-            _maxColumnMoveSpeed = config.MaxColumnSpeed;
-            _minColumnMoveDuration = config.MinColumnMoveDuration;
-            _maxColumnMoveDuration = config.MaxColumnMoveDuration;
+            _levelConfig = config;
             
-            SetupBlockColumns(config);
+            // assign values
+            _minColumnMoveSpeed = _levelConfig.MinColumnSpeed;
+            _maxColumnMoveSpeed = _levelConfig.MaxColumnSpeed;
+            _minColumnMoveDuration = _levelConfig.MinColumnMoveDuration;
+            _maxColumnMoveDuration = _levelConfig.MaxColumnMoveDuration;
+            
+            SetupBlockColumns(_levelConfig);
            
             // prepare values for game start
             _columnMoveSpeed = GetRandomColumnMoveSpeed();
@@ -186,9 +190,9 @@ namespace nl.allon.managers
                     tempBlockView = Instantiate(blockViewPrefab, tempBlockController.transform);
                     tempBlockView.name = "Block_" + rowIndex.ToString();
 
-                    // blockNumber is used to make blocks appear in a certain order
-                    int blockNumber = ((numColumns - 1) * rowIndex) + rowIndex + columnIndex;
-                    BlockModel model = new BlockModel(config.GetDimensions(), blockNumber);
+                    // blockId is used to make blocks appear in a certain order
+                    int blockId = ((numColumns - 1) * rowIndex) + rowIndex + columnIndex;
+                    BlockModel model = new BlockModel(config, blockId);
                     tempBlockController.Init(model, tempBlockView.GetComponent<BlockView>());
 
                     blockCounter++;
