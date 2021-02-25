@@ -6,6 +6,7 @@ using nl.allon.data;
 using nl.allon.events;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace nl.allon.managers
 {
@@ -29,12 +30,14 @@ namespace nl.allon.managers
         [SerializeField] private GameObject _controllerRiftPrefab = default;
         [SerializeField] private GameObject _controllerVivePrefab = default;
         [SerializeField] private GameObject _controllerIndexPrefab = default;
-        
+
+        private XRRayInteractor _rayInteractor = default;
         private GameObject _controllerGO = null;
 
         private void Awake()
         {
             PrepareController();
+            _rayInteractor = GetComponent<XRRayInteractor>();
         }
 
         #region Events
@@ -55,8 +58,10 @@ namespace nl.allon.managers
             {
                 case GameManager.GameState.MENU:
                     _controllerGO.SetActive(true);
+                    _rayInteractor.enabled = true;
                     break;
                 default:
+                    _rayInteractor.enabled = false;
                     _controllerGO.SetActive(false);
                     break;
             }

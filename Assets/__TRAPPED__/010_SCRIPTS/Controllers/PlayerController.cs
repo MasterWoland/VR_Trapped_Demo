@@ -107,6 +107,18 @@ namespace nl.allon.controllers
             _racketGO.SetActive(true);
 
             fx.connectedBody = _racketGO.GetComponent<Rigidbody>();
+            
+            // ---- temp -----
+            FixedJoint fx_02 = curTransform.gameObject.AddComponent<FixedJoint>(); // TODO: cache FixedJoint (use require component?)
+            fx_02.breakForce = Mathf.Infinity; // 20000; // not infinite, we don't want to move solid objects through solid objects
+            fx_02.breakTorque = Mathf.Infinity; // 20000;
+            fx_02.connectedBody = _racketGO.transform.GetChild(0).GetComponent<Rigidbody>();
+            
+            FixedJoint fx_03 = curTransform.gameObject.AddComponent<FixedJoint>(); // TODO: cache FixedJoint (use require component?)
+            fx_03.breakForce = Mathf.Infinity; // 20000; // not infinite, we don't want to move solid objects through solid objects
+            fx_03.breakTorque = Mathf.Infinity; // 20000;
+            fx_03.connectedBody = _racketGO.transform.GetChild(1).GetComponent<Rigidbody>();
+            // ---------------------------
         }
 
         private void ActivateBallManager()
