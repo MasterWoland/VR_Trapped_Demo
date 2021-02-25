@@ -51,3 +51,4 @@ MonoBehaviour:
   _levelReadyEvent: {fileID: 11400000, guid: a737483f38d857f4681d85c4bf15b34a, type: 2}
   _activatePerformedEvent: {fileID: 11400000, guid: 4b0e0765253067a43972b45c2c800b58, type: 2}
   _blocksAppearCompleteEvent: {fileID: 11400000, guid: 8bcf02f563d737946a00ec14ede7fc23, type: 2}
+  _deadlineTriggeredEvent: {fileID: 11400000, guid: 2bcc4b5a6014680479089a3a76734ef8, type: 2}

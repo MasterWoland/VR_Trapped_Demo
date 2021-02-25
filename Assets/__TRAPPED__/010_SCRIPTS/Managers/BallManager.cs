@@ -21,6 +21,8 @@ namespace nl.allon.managers
         private int _curBallindex = 0;
         private bool _useLeftHand = true; // the hand that is used for spawning balls
         private BallController _curBallController = default;
+        private bool _isSpawning = false;
+        private int _numBalls;
         
         private void Awake()
         {
@@ -35,10 +37,10 @@ namespace nl.allon.managers
 
         private void CreateBallPool()
         {
-            int numBalls = 20; //MRA: Magic Number alert. Obtain this from config
+            int numBalls = _playerConfig.NumBalls; //MRA: Magic Number alert. Obtain this from config
             _ballPool = new BallController[numBalls];
             BallController tempBallController;
-            
+
             for (int i = 0; i < numBalls; i++)
             {
                 tempBallController = Instantiate(_ballControllerPrefab, transform).GetComponent<BallController>();
@@ -60,11 +62,14 @@ namespace nl.allon.managers
         // Select = Grip
         private void OnSelectStarted(Hand hand)
         {
+            if (_isSpawning) return;
+
             // Make ball appear
             if (hand == Hand.LEFT && _useLeftHand)
             {
                 _curBallController = _ballPool[_curBallindex];
-            } else if (hand == Hand.RIGHT && !_useLeftHand)
+            }
+            else if (hand == Hand.RIGHT && !_useLeftHand)
             {
                 _curBallController = _ballPool[_curBallindex];
             }
@@ -74,11 +79,20 @@ namespace nl.allon.managers
                 return;
             }
 
-            _curBallController.Activate();
-            
-            // manage index
-            _curBallindex++;
-            if (_curBallindex >= _ballPool.Length) _curBallindex = 0;
+            // MRA: ball must be available
+            if (_curBallController.IsAvailable)
+            {
+                _isSpawning = true;
+                _curBallController.Activate();
+
+                // manage index
+                _curBallindex++;
+                if (_curBallindex >= _ballPool.Length) _curBallindex = 0;
+            }
+            else
+            {
+                Debug.LogError("[BM] Ball is not available");
+            }
         }
 
         // Select = Grip
@@ -88,12 +102,14 @@ namespace nl.allon.managers
             if (hand == Hand.RIGHT && _useLeftHand)
             {
                 return;
-            } else if (hand == Hand.LEFT && !_useLeftHand)
+            }
+            else if (hand == Hand.LEFT && !_useLeftHand)
             {
                 return;
             }
 
             _curBallController.Release();
+            _isSpawning = false;
         }
 
         private void OnGameStateChange(GameManager.GameState state)
@@ -109,7 +125,7 @@ namespace nl.allon.managers
             else
             {
                 //MRA: we stop listening when the game is not running
-                
+
                 _selectStartedEvent.Handler -= OnSelectStarted;
                 _selectCanceledEvent.Handler -= OnSelectCanceled;
             }

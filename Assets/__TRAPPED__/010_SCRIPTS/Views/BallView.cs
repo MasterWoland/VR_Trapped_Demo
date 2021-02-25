@@ -18,16 +18,17 @@ namespace nl.allon.views
 
             Reset();
         }
-
-        private void Reset()
+        
+        #region PUBLIC
+        public void Reset()
         {
             _rigidbody.useGravity = false;
             _rigidbody.isKinematic = true;
             _collider.enabled = false;
             _rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
         }
-
-        #region PUBLIC
+        
         public void Hide()
         {
             gameObject.SetActive(false);
@@ -45,9 +46,7 @@ namespace nl.allon.views
             _collider.enabled = true;
             _rigidbody.velocity = velocity;
             _rigidbody.angularVelocity = angularVelocity;
-
-            // Debug.LogFormat("Vel: {0}, Ang vel: {1}", velocity, angularVelocity.magnitude);
-
+            _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
         #endregion
     }

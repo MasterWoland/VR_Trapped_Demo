@@ -34,6 +34,7 @@ namespace nl.allon.managers
         [SerializeField] private IntEvent _levelReadyEvent = default;
         [SerializeField] private SimpleInputEvent _activatePerformedEvent = default;
         [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
+        [SerializeField] private SimpleEvent _deadlineTriggeredEvent = default;
 
         private void Start()
         {
@@ -99,6 +100,7 @@ namespace nl.allon.managers
             _levelReadyEvent.Handler += OnLevelReadyEvent;
             _activatePerformedEvent.Handler += OnActivatePerformed;
             _blocksAppearCompleteEvent.Handler += OnBlocksHaveAllAppeared;
+            _deadlineTriggeredEvent.Handler += OnDeadlineTriggered;
         }
 
         private void OnDisable()
@@ -108,6 +110,14 @@ namespace nl.allon.managers
             _levelReadyEvent.Handler -= OnLevelReadyEvent;
             _activatePerformedEvent.Handler -= OnActivatePerformed;
             _blocksAppearCompleteEvent.Handler -= OnBlocksHaveAllAppeared;
+            _deadlineTriggeredEvent.Handler -= OnDeadlineTriggered;
+        }
+
+        private void OnDeadlineTriggered()
+        {
+            // MRA: for now we immediately set to Game Over
+            Debug.Log("[GM] Game Over");
+            ChangeState(GameState.GAME_OVER);
         }
         #endregion
 

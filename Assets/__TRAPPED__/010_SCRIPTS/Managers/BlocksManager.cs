@@ -114,6 +114,9 @@ namespace nl.allon.managers
                 case GameManager.GameState.RUNNING:
                     _isGameRunning = true;
                     break;
+                case GameManager.GameState.GAME_OVER:
+                    _isGameRunning = false;
+                    break;
             }
         }
 

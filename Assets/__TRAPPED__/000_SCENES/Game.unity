@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 1227532764}
     - target: {fileID: 521120254945095601, guid: e7bc494a970282f4eb072c7fe7d4989f, type: 3}
       propertyPath: m_Name
-      value: XR Rig
+      value: Player Rig
       objectReference: {fileID: 0}
     - target: {fileID: 521120254945095603, guid: e7bc494a970282f4eb072c7fe7d4989f, type: 3}
       propertyPath: m_RootOrder
