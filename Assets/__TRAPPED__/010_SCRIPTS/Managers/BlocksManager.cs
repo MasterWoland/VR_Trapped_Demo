@@ -26,7 +26,8 @@ namespace nl.allon.managers
         [SerializeField] private SimpleEvent _blockInPositionEvent = default;
         [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
         [SerializeField] private IntEvent _blockDestroyedEvent = default;
-
+        [SerializeField] private SimpleEvent _allBlocksDestroyedEvent = default;
+        
         private LevelConfig _levelConfig = null;
 
         // columns setup
@@ -93,6 +94,11 @@ namespace nl.allon.managers
                     Debug.Log("_____ found destroyed block! : " + blockId);
                     Debug.Log("Num destroyed Blocks: " + _destroyedBlocks.Count);
 
+                    if (_destroyedBlocks.Count >= amount)
+                    {
+                        // MRA all blocks are gone!
+                        _allBlocksDestroyedEvent?.Dispatch();
+                    }
                     // _blockControllers[blockId].DestroyBlock();
                     return;
                 }

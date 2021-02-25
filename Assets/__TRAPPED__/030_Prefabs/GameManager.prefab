@@ -52,3 +52,4 @@ MonoBehaviour:
   _activatePerformedEvent: {fileID: 11400000, guid: 4b0e0765253067a43972b45c2c800b58, type: 2}
   _blocksAppearCompleteEvent: {fileID: 11400000, guid: 8bcf02f563d737946a00ec14ede7fc23, type: 2}
   _deadlineTriggeredEvent: {fileID: 11400000, guid: 2bcc4b5a6014680479089a3a76734ef8, type: 2}
+  _allBlocksDestroyedEvent: {fileID: 11400000, guid: 6c2231887ed52844cb5e1238c2a92621, type: 2}

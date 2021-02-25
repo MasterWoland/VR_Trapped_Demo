@@ -35,6 +35,7 @@ namespace nl.allon.managers
         [SerializeField] private SimpleInputEvent _activatePerformedEvent = default;
         [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
         [SerializeField] private SimpleEvent _deadlineTriggeredEvent = default;
+        [SerializeField] private SimpleEvent _allBlocksDestroyedEvent = default;
 
         private void Start()
         {
@@ -101,6 +102,7 @@ namespace nl.allon.managers
             _activatePerformedEvent.Handler += OnActivatePerformed;
             _blocksAppearCompleteEvent.Handler += OnBlocksHaveAllAppeared;
             _deadlineTriggeredEvent.Handler += OnDeadlineTriggered;
+            _allBlocksDestroyedEvent.Handler += OnAllBlocksDestroyed;
         }
 
         private void OnDisable()
@@ -111,13 +113,7 @@ namespace nl.allon.managers
             _activatePerformedEvent.Handler -= OnActivatePerformed;
             _blocksAppearCompleteEvent.Handler -= OnBlocksHaveAllAppeared;
             _deadlineTriggeredEvent.Handler -= OnDeadlineTriggered;
-        }
-
-        private void OnDeadlineTriggered()
-        {
-            // MRA: for now we immediately set to Game Over
-            Debug.Log("[GM] Game Over");
-            ChangeState(GameState.GAME_OVER);
+            _allBlocksDestroyedEvent.Handler -= OnAllBlocksDestroyed;
         }
         #endregion
 
@@ -171,6 +167,19 @@ namespace nl.allon.managers
             // MRA: All the blocks have animated into position, the game can start
             // MRA: alternatively we can start the game after the score view has appeared completely
             ChangeState(GameState.RUNNING);
+        }
+
+        private void OnDeadlineTriggered()
+        {
+            // MRA: for now we immediately set to Game Over
+            Debug.Log("[GM] Game Over");
+            ChangeState(GameState.GAME_OVER);
+        }
+
+        private void OnAllBlocksDestroyed()
+        {
+            Debug.Log("[GM] All Blocks destroyed! _______");
+            // ChangeState(GameState.GAME_OVER);
         }
         #endregion
     }

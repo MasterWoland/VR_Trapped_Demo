@@ -49,3 +49,4 @@ MonoBehaviour:
   _blockInPositionEvent: {fileID: 11400000, guid: 4e7166400b95c3d448f5192be77d4ba6, type: 2}
   _blocksAppearCompleteEvent: {fileID: 11400000, guid: 8bcf02f563d737946a00ec14ede7fc23, type: 2}
   _blockDestroyedEvent: {fileID: 11400000, guid: 42c9002dd192dfc49a6e6bc57d3ba4e0, type: 2}
+  _allBlocksDestroyedEvent: {fileID: 11400000, guid: 6c2231887ed52844cb5e1238c2a92621, type: 2}
