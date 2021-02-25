@@ -53,7 +53,7 @@ namespace nl.allon.controllers
         {
             if (_model.BlockId == id)
             {
-                Debug.Log("[BC] Corresponding Block: "+id);
+                // Debug.Log("[BC] Corresponding Block: "+id);
                 
                 // MRA: for now we set a limit to 100 for the value.
                 // In unforeseen cases the velocity of the ball may be beyond logical values, so we have to cap this
@@ -66,10 +66,10 @@ namespace nl.allon.controllers
             }
             else
             {
-                Debug.Log("[BC] Wrong Block: "+id+", instead of: "+_model.BlockId);
+                // Debug.Log("[BC] Wrong Block: "+id+", instead of: "+_model.BlockId);
             }
 
-            Debug.Log("[BC] Impact value: "+value);
+            // Debug.Log("[BC] Impact value: "+value);
         }
         #endregion
         // private void OnCollisionEnter(Collision collision)

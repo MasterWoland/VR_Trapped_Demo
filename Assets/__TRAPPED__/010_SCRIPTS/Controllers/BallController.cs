@@ -32,6 +32,11 @@ namespace nl.allon.controllers
             _view.Hide();
         }
 
+        private void FixedUpdate()
+        {
+            _view.CheckVelocity();
+        }
+
         public void Activate()
         {
             _isAvailable = false;
@@ -43,7 +48,6 @@ namespace nl.allon.controllers
         {
             // we must unparent this object
             _transform.SetParent(null);
-            Debug.Log("[BC] Parent on release: "+transform.name);
             _view.Release(_velocityEstimator.GetVelocityEstimate(), _velocityEstimator.GetAngularVelocityEstimate());
             Invoke(nameof(Remove), 4f); //MRA: from config!
         }
@@ -52,7 +56,6 @@ namespace nl.allon.controllers
         {
             // MRA: re-parent to hand
             _transform.SetParent(_spawnParentTF);
-            Debug.Log("[BC] Parent on Remove: "+transform.name);
             _view.Reset();
             _view.Hide();
             _isAvailable = true;
