@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockImpactEvent: {fileID: 11400000, guid: 2dc2e90e1628cb746ba388ca3b742250, type: 2}
+  _blockDestroyedEvent: {fileID: 11400000, guid: 42c9002dd192dfc49a6e6bc57d3ba4e0, type: 2}
   _blockInPositionEvent: {fileID: 11400000, guid: 4e7166400b95c3d448f5192be77d4ba6, type: 2}
-  HealthText: {fileID: 0}

@@ -12,9 +12,11 @@ namespace nl.allon.controllers
     public class BlockController : MonoBehaviour
     {
         [SerializeField] private FloatIdEvent _blockImpactEvent;
+        [SerializeField] private IntEvent _blockDestroyedEvent;
         [SerializeField] private SimpleEvent _blockInPositionEvent = default;
         private BlockModel _model;
         private BlockView _view;
+        // private bool _isMarkedAsDestroyed = false;
         // private float _health = 100; // MRA: temp
 
         // temp
@@ -42,6 +44,21 @@ namespace nl.allon.controllers
                 _blockInPositionEvent?.Dispatch();
             }
         }
+
+        #region PUBLIC
+        public int GetId()
+        {
+            return _model.BlockId;
+        }
+
+        private void DestroyBlock()
+        {
+            // _isMarkedAsDestroyed = true;
+            // MRA: for we only de-activate the GameObject
+            gameObject.SetActive(false);
+            
+        }
+        #endregion
         
         #region EVENT
         private void OnEnable()
@@ -63,6 +80,12 @@ namespace nl.allon.controllers
                 float impact = value * _model.Config.BlockImpactMultiplier;
                 _model.Health -= (int)impact;
                 _view.ShowDebugInfo(_model.Health);
+
+                if (_model.Health <= 0)
+                {
+                    _blockDestroyedEvent?.Dispatch(_model.BlockId);
+                    DestroyBlock();
+                }
             }
             else
             {

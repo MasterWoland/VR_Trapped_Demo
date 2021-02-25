@@ -25,13 +25,15 @@ namespace nl.allon.managers
         [SerializeField] private GameStateEvent _gameStateEvent = default;
         [SerializeField] private SimpleEvent _blockInPositionEvent = default;
         [SerializeField] private SimpleEvent _blocksAppearCompleteEvent = default;
+        [SerializeField] private IntEvent _blockDestroyedEvent = default;
 
         private LevelConfig _levelConfig = null;
-        
+
         // columns setup
         private Transform _transform;
         private Transform[] _columns;
         private BlockController[] _blockControllers;
+        private List<BlockController> _destroyedBlocks = new List<BlockController>();
         private int _numBlocksInPosition = 0;
 
         // columns movement
@@ -66,6 +68,7 @@ namespace nl.allon.managers
             _prepareLevelEvent.Handler += OnPrepareLevel;
             _gameStateEvent.Handler += OnGameStateChange;
             _blockInPositionEvent.Handler += OnBlockInPosition;
+            _blockDestroyedEvent.Handler += OnBlockDestroyed;
         }
 
         private void OnDisable()
@@ -73,6 +76,27 @@ namespace nl.allon.managers
             _prepareLevelEvent.Handler -= OnPrepareLevel;
             _gameStateEvent.Handler -= OnGameStateChange;
             _blockInPositionEvent.Handler -= OnBlockInPosition;
+            _blockDestroyedEvent.Handler -= OnBlockDestroyed;
+        }
+
+        private void OnBlockDestroyed(int blockId)
+        {
+            int amount = _blockControllers.Length;
+
+            for (int i = 0; i < amount; i++)
+            {
+                if (_blockControllers[i].GetId() != blockId) continue;
+
+                if (!_destroyedBlocks.Contains(_blockControllers[blockId]))
+                {
+                    _destroyedBlocks.Add(_blockControllers[blockId]);
+                    Debug.Log("_____ found destroyed block! : " + blockId);
+                    Debug.Log("Num destroyed Blocks: " + _destroyedBlocks.Count);
+
+                    // _blockControllers[blockId].DestroyBlock();
+                    return;
+                }
+            }
         }
 
         private void OnBlockInPosition()
@@ -88,15 +112,15 @@ namespace nl.allon.managers
         private void OnPrepareLevel(LevelConfig config)
         {
             _levelConfig = config;
-            
+
             // assign values
             _minColumnMoveSpeed = _levelConfig.MinColumnSpeed;
             _maxColumnMoveSpeed = _levelConfig.MaxColumnSpeed;
             _minColumnMoveDuration = _levelConfig.MinColumnMoveDuration;
             _maxColumnMoveDuration = _levelConfig.MaxColumnMoveDuration;
-            
+
             SetupBlockColumns(_levelConfig);
-           
+
             // prepare values for game start
             _columnMoveSpeed = GetRandomColumnMoveSpeed();
             _columnMoveDuration = GetRandomColumnMoveDuration();

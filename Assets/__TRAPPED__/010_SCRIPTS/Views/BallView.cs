@@ -57,7 +57,7 @@ namespace nl.allon.views
 
             if (_rigidbody.velocity.sqrMagnitude > MAX_SQR_MAGNITUDE)
             {
-                Debug.Log("___ Ball was going too fast: "+_rigidbody.velocity.sqrMagnitude);
+                // Debug.Log("___ Ball was going too fast: "+_rigidbody.velocity.sqrMagnitude);
                 float magnitude = _rigidbody.velocity.magnitude;
                 Vector3 newVelocity = _rigidbody.velocity.normalized * magnitude;
                 _rigidbody.velocity = newVelocity;
