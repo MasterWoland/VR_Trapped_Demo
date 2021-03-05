@@ -1,0 +1,423 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.4f1 (becced5a802b) revision 12504301'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19041.804; Version 2004; 64bit' Language: 'en' Physical Memory: 32678 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.4f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/Unity Projects/VR/DEMO/Trapped/VR_Trapped_Demo
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+52361
+Successfully changed project path to: E:/Unity Projects/VR/DEMO/Trapped/VR_Trapped_Demo
+E:/Unity Projects/VR/DEMO/Trapped/VR_Trapped_Demo
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 81.40 ms, found 7 plugins.
+Preloading 1 native plugins for Editor in 1.23 ms.
+Initialize engine version: 2020.2.4f1 (becced5a802b)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/Unity Projects/VR/DEMO/Trapped/VR_Trapped_Demo/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1080 (ID=0x1b80)
+    Vendor:   
+    VRAM:     7988 MB
+    Driver:   27.21.14.5671
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56796
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002722 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 61.30 ms, found 7 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.595 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002976 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 67.27 ms, found 7 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+[XR] OculusXRPlugin: registering subsystems
+[XR] Unable to register display lifecyle provider: [1]
+[XR] Oculus Input lifecycle provider registered.
+[XR] Unable to register input lifecyle provider: [1]
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in E:\Unity Projects\VR\DEMO\Trapped\VR_Trapped_Demo\Library\PackageCache\com.unity.xr.oculus@1.7.0\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in E:\Unity Projects\VR\DEMO\Trapped\VR_Trapped_Demo\Library\PackageCache\com.unity.xr.oculus@1.7.0\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.7.0/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.345 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.87 ms, found 7 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 3219 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 142.5 MB.
+System memory in use after: 141.8 MB.
+
+Unloading 133 unused Assets to reduce memory usage. Loaded Objects now: 3658.
+Total: 3.376100 ms (FindLiveObjects: 0.282400 ms CreateObjectMapping: 0.136900 ms MarkObjects: 2.339300 ms  DeleteObjects: 0.616500 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/__TRAPPED__/000_Scenes/Game.unity
+  artifactKey: Guid(4235bb494cf68db4ab0b4464d19bf84a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/__TRAPPED__/000_Scenes/Game.unity using Guid(4235bb494cf68db4ab0b4464d19bf84a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6f2e9dc7f9468f61903e6dcbe1fb840') in 0.007383 seconds
+  Import took 0.013366 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.779752 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Standard/badminron_clear.mat
+  artifactKey: Guid(ce1714f7afd559742a826ae824757c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Standard/badminron_clear.mat using Guid(ce1714f7afd559742a826ae824757c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5d149a08486c47c8676279eee74e03b') in 0.160611 seconds
+  Import took 0.313987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Toon/badminron_gut_mtl.mat
+  artifactKey: Guid(4ca079f0fd581364983f81130060c0b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Toon/badminron_gut_mtl.mat using Guid(4ca079f0fd581364983f81130060c0b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a63f9979e2389254089efb18869293f') in 0.348503 seconds
+  Import took 0.430250 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Standard/baseball.mat
+  artifactKey: Guid(549576fd207856546873004b050c37ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Standard/baseball.mat using Guid(549576fd207856546873004b050c37ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d2f881c8fa4b1dd0fd92dd0bd9f26aa') in 0.277151 seconds
+  Import took 0.373078 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Toon/basketball_mtl.mat
+  artifactKey: Guid(e7bb496651e5a4f46b4ec5cae03ad1dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Toon/basketball_mtl.mat using Guid(e7bb496651e5a4f46b4ec5cae03ad1dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8db25c5ca93805d48c3e861cd6b9d3d') in 0.093573 seconds
+  Import took 0.164044 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Sporting Goods/Model/badminton.fbx
+  artifactKey: Guid(8f52c668f2e3aa947abfe9a13b12ce9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Model/badminton.fbx using Guid(8f52c668f2e3aa947abfe9a13b12ce9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6ac5c2eeb22275c318e1ddcf76da165') in 0.204041 seconds
+  Import took 0.246570 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic Highway Sign SDF.asset
+  artifactKey: Guid(dc36b3fdc14f47ebb36fd484a67e268a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic Highway Sign SDF.asset using Guid(dc36b3fdc14f47ebb36fd484a67e268a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2923c9287f55421a6236d8b92c5289d') in 0.064924 seconds
+  Import took 0.097779 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000218 seconds.
+  path: Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_left/Materials/external_controller01_col.mat
+  artifactKey: Guid(9eeec58b39f3b4218866520db6ad2edd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_left/Materials/external_controller01_col.mat using Guid(9eeec58b39f3b4218866520db6ad2edd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be8e4ff37ee903faede8dc2d43211c10') in 0.018868 seconds
+  Import took 0.054405 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Standard/basketball_mtl.mat
+  artifactKey: Guid(0224df610b32e0c499aae0b2643e2061) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Standard/basketball_mtl.mat using Guid(0224df610b32e0c499aae0b2643e2061) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e69da1f7ca45e4030b34f855125f9666') in 0.222200 seconds
+  Import took 0.262479 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/Sporting Goods/Model/tennis.fbx
+  artifactKey: Guid(1935cfd2011d8bd42b3b15c2036b4669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Model/tennis.fbx using Guid(1935cfd2011d8bd42b3b15c2036b4669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2d3628335c11db2d3c8fc2389b6fddf') in 0.041294 seconds
+  Import took 0.113571 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Fonts/Oswald-Bold.ttf
+  artifactKey: Guid(c9f6d0e7bc8541498c9a4799ba184ede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Oswald-Bold.ttf using Guid(c9f6d0e7bc8541498c9a4799ba184ede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50b1874ec2adf808b2337ce3cada2383') in 0.066930 seconds
+  Import took 0.139294 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000192 seconds.
+  path: Assets/Sporting Goods/Model/table_tennis.fbx
+  artifactKey: Guid(73f998c344a3b0f4cb19acd8f3609b17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Model/table_tennis.fbx using Guid(73f998c344a3b0f4cb19acd8f3609b17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1f69f6e085ca6479662d918893170a4') in 0.058264 seconds
+  Import took 0.111785 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf
+  artifactKey: Guid(4beb055f07aaff244873dec698d0363e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf using Guid(4beb055f07aaff244873dec698d0363e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d2b596633b46f90c740bd305f8e6de3') in 0.007264 seconds
+  Import took 0.035337 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000213 seconds.
+  path: Assets/VR Controllers Models/Oculus TouchControllers/Materials/lambert1.mat
+  artifactKey: Guid(fd93cba651e74834b9c2bf6a6f228add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus TouchControllers/Materials/lambert1.mat using Guid(fd93cba651e74834b9c2bf6a6f228add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd13ebff367a23d9fa411cea888dfa8f7') in 0.126439 seconds
+  Import took 0.182631 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000218 seconds.
+  path: Assets/Sporting Goods/Matterials/grass_mtl.mat
+  artifactKey: Guid(8042854085c8b9a4c929654aed0e2f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/grass_mtl.mat using Guid(8042854085c8b9a4c929654aed0e2f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1449a4a770d2da4ea384bfeb2166af3') in 0.128052 seconds
+  Import took 0.200648 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/VR Controllers Models/Valve Index Controllers/valve-index-controller-left/source/valve_controller_knu_1_0_left.obj
+  artifactKey: Guid(548065693cc062a498475a5aeb86b70c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Valve Index Controllers/valve-index-controller-left/source/valve_controller_knu_1_0_left.obj using Guid(548065693cc062a498475a5aeb86b70c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a9f29ba435f2b2470fef1dc1e21f217') in 0.117962 seconds
+  Import took 0.195478 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/Sporting Goods/Model/basketball.fbx
+  artifactKey: Guid(fc3a931335d0cac448beab2ff581d785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Model/basketball.fbx using Guid(fc3a931335d0cac448beab2ff581d785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4859bc1c514367f076f4ffac33b86e78') in 0.193189 seconds
+  Import took 0.281272 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Toon/baseball_mtl.mat
+  artifactKey: Guid(22a9cc392a5848f418b378549cb93ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Toon/baseball_mtl.mat using Guid(22a9cc392a5848f418b378549cb93ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7eb0a04ebe5f88dd04067f20103926f1') in 1.067160 seconds
+  Import took 1.214082 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Pixelplacement/SurgeExamples/Fonts/Arial Black SD.ttf
+  artifactKey: Guid(4af6adf4190764c4282af4e734c59f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Pixelplacement/SurgeExamples/Fonts/Arial Black SD.ttf using Guid(4af6adf4190764c4282af4e734c59f7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adf9ed300e03215febb8abec1d63144e') in 0.042836 seconds
+  Import took 0.085933 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/VR Controllers Models/Oculus TouchControllers/Materials/L_controller_MAT.mat
+  artifactKey: Guid(1b4b59669ed0af54a835a40dc3f96b1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus TouchControllers/Materials/L_controller_MAT.mat using Guid(1b4b59669ed0af54a835a40dc3f96b1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad6535e7d138096fec0b76f11e0a30ca') in 0.170987 seconds
+  Import took 0.214500 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Assets/Sporting Goods/Model/baseball.fbx
+  artifactKey: Guid(4b9833a4226500b4684660bd5cce4bdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Model/baseball.fbx using Guid(4b9833a4226500b4684660bd5cce4bdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c53558fd85486c016d334cc5754c3a62') in 0.141289 seconds
+  Import took 0.166973 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/VR Controllers Models/Oculus TouchControllers/Materials/L_controller_gloss_MAT.mat
+  artifactKey: Guid(e7a8b16df5212d2459b120c0921f6f44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus TouchControllers/Materials/L_controller_gloss_MAT.mat using Guid(e7a8b16df5212d2459b120c0921f6f44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '445ffb42f83602a919e3592be8f86933') in 0.055496 seconds
+  Import took 0.080795 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Fonts/Electronic Highway Sign.TTF
+  artifactKey: Guid(8a2b9e2a607dd2143b58c44bc32410b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Electronic Highway Sign.TTF using Guid(8a2b9e2a607dd2143b58c44bc32410b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd6f477decd303576b9572447b2f57c1') in 0.024958 seconds
+  Import took 0.058656 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+  artifactKey: Guid(e3265ab4bf004d28a9537516768c1c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Fonts/LiberationSans.ttf using Guid(e3265ab4bf004d28a9537516768c1c75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25d111539f98320aee619eeda5cd0d5f') in 0.007138 seconds
+  Import took 0.031336 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/VR Controllers Models/Oculus Controllers/oculus_rifts_controller_left/oculusriftscontleft.mat
+  artifactKey: Guid(04267dafa4c3044999d11f582052670f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus Controllers/oculus_rifts_controller_left/oculusriftscontleft.mat using Guid(04267dafa4c3044999d11f582052670f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '073ee1be091387e990042908df9e41cc') in 0.027358 seconds
+  Import took 0.081122 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Toon/badminron_mtl.mat
+  artifactKey: Guid(52e81d2d9a243d24ea104eca2d80f8f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Toon/badminron_mtl.mat using Guid(52e81d2d9a243d24ea104eca2d80f8f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5cc054b68a591a786a17bcd5c660608') in 0.033354 seconds
+  Import took 0.060139 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_right/oculus_cv1_controller_right.obj
+  artifactKey: Guid(6713cf46d4f46b847abde47e626d8537) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_right/oculus_cv1_controller_right.obj using Guid(6713cf46d4f46b847abde47e626d8537) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc093f58a240ee4c0eae5bd4155094fe') in 0.033008 seconds
+  Import took 0.051794 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_right/Materials/external_controller01_col.mat
+  artifactKey: Guid(8a2c36a73f5f44c9b8df148310088323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_right/Materials/external_controller01_col.mat using Guid(8a2c36a73f5f44c9b8df148310088323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '104efbe4b8ea0ef21746e3e3b61750e3') in 0.007044 seconds
+  Import took 0.020341 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_left/oculus_cv1_controller_left.obj
+  artifactKey: Guid(a0080df8c0c15724d954d8a5b0e9a592) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus Controllers/oculus_cv1_controller_left/oculus_cv1_controller_left.obj using Guid(a0080df8c0c15724d954d8a5b0e9a592) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f7ccfd60b558c9505513badc4b4bd37') in 0.018006 seconds
+  Import took 0.036365 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Fonts/Bangers.ttf
+  artifactKey: Guid(5dd49b3eacc540408c98eee0de38e0f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Bangers.ttf using Guid(5dd49b3eacc540408c98eee0de38e0f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca75beae6e08a308166397e2bd6e424c') in 0.007905 seconds
+  Import took 0.023321 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Sporting Goods/Matterials/mtl_Standard/badminton.mat
+  artifactKey: Guid(44431d2fc20194940aec26ac42b8b442) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Matterials/mtl_Standard/badminton.mat using Guid(44431d2fc20194940aec26ac42b8b442) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5abc3ef559f3b4682b085e41084baa2') in 0.139508 seconds
+  Import took 0.173280 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Sporting Goods/Model/soccerball.fbx
+  artifactKey: Guid(b91a199c58e290148aa6c72ce131ff6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sporting Goods/Model/soccerball.fbx using Guid(b91a199c58e290148aa6c72ce131ff6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90925e1035d0ae9b8fbbadf786e1354a') in 0.077225 seconds
+  Import took 0.105108 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/__TRAPPED__/040_Materials/BaseMaterials/M_White_Transparent.mat
+  artifactKey: Guid(3c0900694d068774281fc356101a10ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/__TRAPPED__/040_Materials/BaseMaterials/M_White_Transparent.mat using Guid(3c0900694d068774281fc356101a10ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e46abfc724b116a673794810a2e2092c') in 0.006478 seconds
+  Import took 0.015925 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000223 seconds.
+  path: Assets/VR Controllers Models/Oculus Controllers/oculus_rifts_controller_left/oculus_rifts_controller_left.obj
+  artifactKey: Guid(a80f072576863f64d88a418ce0403b4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus Controllers/oculus_rifts_controller_left/oculus_rifts_controller_left.obj using Guid(a80f072576863f64d88a418ce0403b4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bd0e8c47d318a1cda0c45050a814d8b') in 0.018830 seconds
+  Import took 0.047191 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Fonts/Anton.ttf
+  artifactKey: Guid(997a43b767814dd0a7642ec9b78cba41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Fonts/Anton.ttf using Guid(997a43b767814dd0a7642ec9b78cba41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49554d2a0d215dcc33f38f260478c22e') in 0.047523 seconds
+  Import took 0.103618 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/VR Controllers Models/Oculus TouchControllers/Materials/L_controller_DIF.mat
+  artifactKey: Guid(b2213e7c681de9f488d309685721bb12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VR Controllers Models/Oculus TouchControllers/Materials/L_controller_DIF.mat using Guid(b2213e7c681de9f488d309685721bb12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16fa9c7e4c954ce126112107df9bf2c4') in 0.143694 seconds
+  Import took 0.188277 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.059195 seconds.
+  path: Assets/__TRAPPED__/000_Scenes/Levels
+  artifactKey: Guid(2a5f7ff19030f5e47836c1f7952ef7e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/__TRAPPED__/000_Scenes/Levels using Guid(2a5f7ff19030f5e47836c1f7952ef7e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89544c307f9c2e83beec840de0da6baf') in 0.001418 seconds
+  Import took 0.018237 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003420 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 7 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+NullReferenceException: Object reference not set to an instance of an object
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in E:\Unity Projects\VR\DEMO\Trapped\VR_Trapped_Demo\Library\PackageCache\com.unity.xr.oculus@1.7.0\Runtime\OculusLoader.cs:243 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in E:\Unity Projects\VR\DEMO\Trapped\VR_Trapped_Demo\Library\PackageCache\com.unity.xr.oculus@1.7.0\Runtime\OculusLoader.cs:228 
+
+(Filename: Library/PackageCache/com.unity.xr.oculus@1.7.0/Runtime/OculusLoader.cs Line: 243)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.032 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.83 ms, found 7 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 3114 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 136.0 MB.
+System memory in use after: 135.6 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3708.
+Total: 3.646800 ms (FindLiveObjects: 0.464800 ms CreateObjectMapping: 0.148600 ms MarkObjects: 2.459000 ms  DeleteObjects: 0.572800 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
