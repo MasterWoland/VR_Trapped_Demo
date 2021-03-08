@@ -10,7 +10,7 @@ Material:
   m_Name: M_Block_002
   m_Shader: {fileID: -6465566751694194690, guid: c535fd204357b704a99c5f27e999d9b0, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -49,4 +49,5 @@ Material:
     - Color_2b0baf2108ef4b2f9d62e57ffabf1aeb: {r: 0, g: 0, b: 0, a: 1}
     - Vector2_b4d3d45a6c1b44db841d13db016d65d2: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_d91011e0971a43b19cf634253c9ba047: {r: 1, g: 1, b: 0, a: 0}
+    - _MainColor: {r: 0, g: 0.029144239, b: 0.4339623, a: 1}
   m_BuildTextureStacks: []
