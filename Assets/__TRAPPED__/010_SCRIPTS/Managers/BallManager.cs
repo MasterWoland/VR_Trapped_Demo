@@ -108,7 +108,7 @@ namespace nl.allon.managers
                 return;
             }
 
-            _curBallController.Release();
+            if(_curBallController) _curBallController.Release();
             _isSpawning = false;
         }
 
