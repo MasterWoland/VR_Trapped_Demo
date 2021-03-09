@@ -13,12 +13,9 @@ namespace nl.allon.components
     public class BlockMaterial : MonoBehaviour
     {
         [SerializeField] private AnimationCurve _pulseCurve = default;
-        // public Vector2 Offset = default;
-        // public Color MaterialColor = default;
-        // public bool UseDither = false;
         private MaterialPropertyBlock _propertyBlock = default;
         private Renderer _renderer = default;
-        private float _duration = 0.5f;
+        private float _duration;
         private TweenBase _pulseTween;
         
         // --- id's ---
@@ -27,8 +24,6 @@ namespace nl.allon.components
         private int _useDitherID;
         private int _ditherAmountID;
         private int _emissionIntensityID;
-        // private float _timer = 0f;
-        // private bool _doDitherEffect = false;
         
         private void Awake()
         {
@@ -52,15 +47,6 @@ namespace nl.allon.components
             _renderer.SetPropertyBlock(_propertyBlock);
         }
 
-        // private void SetProperties()
-        // {
-        //     // always get the property before changing it with MaterialPropertyBlocks
-        //     _renderer.GetPropertyBlock(_propertyBlock);
-        //
-        //     _propertyBlock.SetColor(_mainColorID, Random.ColorHSV());
-        //     _renderer.SetPropertyBlock(_propertyBlock);
-        // }
-
         private void SetBlockProperties()
         {
             _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
@@ -74,16 +60,18 @@ namespace nl.allon.components
         #region PUBLIC
         public void ApplyHitEffect(float impact)
         {
-            // Debug.Log("[BlockMaterial] Hit: "+impact);
-            
             _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
             _propertyBlock.SetInt(_useDitherID, 1);
             _propertyBlock.SetFloat(_ditherAmountID, 0);
             _renderer.SetPropertyBlock(_propertyBlock);
-            // _doDitherEffect = true;
-            // _propertyBlock.SetFloat(di, 1);
-            float duration = _duration.Remap(0f, 0f, 15f, 1f);
-            Tween.Value(0f, 0.8f, UpdateDither, 1f, 0f, null, Tween.LoopType.None, null, OnHitEffectComplete);
+
+            // map duration to impact value
+            if (impact >= 20f) impact = 20f; // MRA get this value from config
+            _duration = impact.Remap(0f, 20f, 0f, 2f);
+
+            Debug.LogFormat("Impact: {0}, Duration: {1} ", impact, _duration);
+            
+            Tween.Value(0f, 0.8f, UpdateDither, _duration, 0f, _pulseCurve, Tween.LoopType.None, null, OnHitEffectReachedMax);
         }
         #endregion
         
@@ -91,17 +79,19 @@ namespace nl.allon.components
         private void UpdateDither(float value)
         {
             _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
-            // _propertyBlock.SetInt(_useDitherID, 1);
             _propertyBlock.SetFloat(_ditherAmountID, value);
             _renderer.SetPropertyBlock(_propertyBlock);
         }
 
+        private void OnHitEffectReachedMax()
+        {
+            Tween.Value(0.8f, 0f, UpdateDither, _duration * 0.5f, 0f, _pulseCurve, Tween.LoopType.None, null, OnHitEffectComplete);
+        }
         private void OnHitEffectComplete()
         {
-            Debug.Log("___ dither complete ____");
+            // Debug.Log("___ dither complete ____");
             _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
             _propertyBlock.SetInt(_useDitherID, 0);
-            // _propertyBlock.SetFloat(_ditherAmountID, value);
             _renderer.SetPropertyBlock(_propertyBlock);
         }
         #endregion
