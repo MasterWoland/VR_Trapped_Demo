@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using nl.allon.utils;
+using Pixelplacement;
+using Pixelplacement.TweenSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
@@ -9,18 +12,23 @@ namespace nl.allon.components
 {
     public class BlockMaterial : MonoBehaviour
     {
-        public Vector2 Offset = default;
-        public Color MaterialColor = default;
-        public bool UseDither = false;
+        [SerializeField] private AnimationCurve _pulseCurve = default;
+        // public Vector2 Offset = default;
+        // public Color MaterialColor = default;
+        // public bool UseDither = false;
         private MaterialPropertyBlock _propertyBlock = default;
         private Renderer _renderer = default;
+        private float _duration = 0.5f;
+        private TweenBase _pulseTween;
+        
+        // --- id's ---
         private int _mainColorID;
         private int _textureOffsetID;
         private int _useDitherID;
         private int _ditherAmountID;
-        private float _duration = 0.5f;
-        private float _timer = 0f;
-        private bool _doDitherEffect = false;
+        private int _emissionIntensityID;
+        // private float _timer = 0f;
+        // private bool _doDitherEffect = false;
         
         private void Awake()
         {
@@ -28,20 +36,35 @@ namespace nl.allon.components
             OnValidate();
         }
 
-        private void SetProperties()
+        private void Start()
         {
-            // always get the property before changing it with MaterialPropertyBlocks
-            _renderer.GetPropertyBlock(_propertyBlock);
+            // MRA: obtain values from config!
+            _pulseTween = Tween.Value(0.5f, 2.5f, Pulse, 2.5f, 0f, _pulseCurve, Tween.LoopType.PingPong);
+            // MRA: perhaps Cancel tween on hit? And resume after?
+            
+            // _pulseTween.Start();
+        }
 
-            _propertyBlock.SetColor(_mainColorID, Random.ColorHSV());
+        private void Pulse(float value)
+        {
+            _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
+            _propertyBlock.SetFloat(_emissionIntensityID, value);
             _renderer.SetPropertyBlock(_propertyBlock);
         }
+
+        // private void SetProperties()
+        // {
+        //     // always get the property before changing it with MaterialPropertyBlocks
+        //     _renderer.GetPropertyBlock(_propertyBlock);
+        //
+        //     _propertyBlock.SetColor(_mainColorID, Random.ColorHSV());
+        //     _renderer.SetPropertyBlock(_propertyBlock);
+        // }
 
         private void SetBlockProperties()
         {
             _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
-            // _propertyBlock.SetColor("_mainColor", MaterialColor);
-            _propertyBlock.SetVector(_textureOffsetID, Offset);
+            _propertyBlock.SetVector(_textureOffsetID, new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)));
             _propertyBlock.SetInt(_useDitherID, 0);
             
             //apply propertyBlock to renderer
@@ -57,8 +80,29 @@ namespace nl.allon.components
             _propertyBlock.SetInt(_useDitherID, 1);
             _propertyBlock.SetFloat(_ditherAmountID, 0);
             _renderer.SetPropertyBlock(_propertyBlock);
-            _doDitherEffect = true;
+            // _doDitherEffect = true;
             // _propertyBlock.SetFloat(di, 1);
+            float duration = _duration.Remap(0f, 0f, 15f, 1f);
+            Tween.Value(0f, 0.8f, UpdateDither, 1f, 0f, null, Tween.LoopType.None, null, OnHitEffectComplete);
+        }
+        #endregion
+        
+        #region HIT EFFECT
+        private void UpdateDither(float value)
+        {
+            _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
+            // _propertyBlock.SetInt(_useDitherID, 1);
+            _propertyBlock.SetFloat(_ditherAmountID, value);
+            _renderer.SetPropertyBlock(_propertyBlock);
+        }
+
+        private void OnHitEffectComplete()
+        {
+            Debug.Log("___ dither complete ____");
+            _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
+            _propertyBlock.SetInt(_useDitherID, 0);
+            // _propertyBlock.SetFloat(_ditherAmountID, value);
+            _renderer.SetPropertyBlock(_propertyBlock);
         }
         #endregion
         
@@ -71,6 +115,7 @@ namespace nl.allon.components
             _textureOffsetID = Shader.PropertyToID("_TextureOffset");
             _useDitherID = Shader.PropertyToID("_UseDither");
             _ditherAmountID = Shader.PropertyToID("_DitherAmount");
+            _emissionIntensityID = Shader.PropertyToID("_EmissionIntensity");
         }
         #endregion
 
@@ -85,48 +130,6 @@ namespace nl.allon.components
 #endif
 
             SetBlockProperties();
-        }
-        #endregion
-        
-        #region TEMP
-        private void Update()
-        {
-            if (_doDitherEffect)
-            {
-                Debug.Log("___ dither effect ___ "+this.name);
-                
-                _timer += Time.deltaTime;
-                float value = Mathf.Lerp(0, 0.8f, _timer / _duration);
-                
-                _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
-                // _propertyBlock.SetInt(_useDitherID, 1);
-                _propertyBlock.SetFloat(_ditherAmountID, value);
-                _renderer.SetPropertyBlock(_propertyBlock);
-
-                if (_timer >= _duration)
-                {
-                    _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
-                    _propertyBlock.SetInt(_useDitherID, 0);
-                    _propertyBlock.SetFloat(_ditherAmountID, 0);
-                    _renderer.SetPropertyBlock(_propertyBlock);
-
-                    _doDitherEffect = false;
-                    _timer = 0;
-                }
-            }
-            // if (Time.timeSinceLevelLoad > 4f)
-            // {
-            //     Debug.Log("__hello");
-            //     _renderer.GetPropertyBlock(_propertyBlock); // always get the property before changing it with MaterialPropertyBlocks
-            //     // _propertyBlock.SetColor("_mainColor", MaterialColor);
-            //     _propertyBlock.SetInt(_useDitherID, 1);
-            //     _propertyBlock.SetFloat("_DitherAmount", 0.3f);
-            //     _propertyBlock.SetVector(_textureOffsetID, Vector2.zero);
-            //     // _propertyBlock.SetInt(_useDitherID, 1);
-            //
-            //     //apply propertyBlock to renderer
-            //     _renderer.SetPropertyBlock(_propertyBlock);
-            // }
         }
         #endregion
     }
