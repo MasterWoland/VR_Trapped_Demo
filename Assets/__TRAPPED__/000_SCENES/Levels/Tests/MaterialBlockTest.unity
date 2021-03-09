@@ -237,7 +237,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &124301108
 MonoBehaviour:
@@ -251,8 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20f3dc76442c4741a65006cfe536e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialColor: {r: 0.7735849, g: 0, b: 0.572875, a: 1}
-  _renderer: {fileID: 0}
+  MaterialColor: {r: 0.8584906, g: 0.3482246, b: 0.16602883, a: 1}
+  _renderer: {fileID: 124301110}
 --- !u!65 &124301109
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &219110127
 MonoBehaviour:
@@ -361,8 +361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20f3dc76442c4741a65006cfe536e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialColor: {r: 0.075649686, g: 0.3048265, b: 0.6415094, a: 1}
-  _renderer: {fileID: 0}
+  MaterialColor: {r: 0.1672882, g: 0.6431373, b: 0.074509814, a: 1}
+  _renderer: {fileID: 219110129}
 --- !u!65 &219110128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaterialColor: {r: 0.23584908, g: 0.070087224, b: 0.070087224, a: 1}
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 245250241}
 --- !u!65 &245250240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -776,7 +776,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1174333224
 MonoBehaviour:
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaterialColor: {r: 0.7735849, g: 0, b: 0.572875, a: 1}
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 1174333226}
 --- !u!65 &1174333225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -886,7 +886,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1400800145
 MonoBehaviour:
@@ -900,8 +900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20f3dc76442c4741a65006cfe536e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialColor: {r: 0.25342646, g: 0.8018868, b: 0.5264952, a: 1}
-  _renderer: {fileID: 0}
+  MaterialColor: {r: 0.7643959, g: 0.8584906, b: 0.0040494935, a: 1}
+  _renderer: {fileID: 1400800147}
 --- !u!65 &1400800146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -996,7 +996,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1458460047
 MonoBehaviour:
@@ -1010,8 +1010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20f3dc76442c4741a65006cfe536e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialColor: {r: 0.7735849, g: 0, b: 0.572875, a: 1}
-  _renderer: {fileID: 0}
+  MaterialColor: {r: 0.039159846, g: 0.754717, b: 0.09581988, a: 1}
+  _renderer: {fileID: 1458460049}
 --- !u!65 &1458460048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1106,7 +1106,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1510694940
 MonoBehaviour:
@@ -1120,8 +1120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20f3dc76442c4741a65006cfe536e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialColor: {r: 0.7735849, g: 0, b: 0.572875, a: 1}
-  _renderer: {fileID: 0}
+  MaterialColor: {r: 0.1729341, g: 0.33962262, b: 0.15859735, a: 1}
+  _renderer: {fileID: 1510694942}
 --- !u!65 &1510694941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1216,7 +1216,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1547317748
 MonoBehaviour:
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaterialColor: {r: 0.16119644, g: 0.5566038, b: 0, a: 1}
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 1547317750}
 --- !u!65 &1547317749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1421,7 +1421,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &2060070604
 MonoBehaviour:
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaterialColor: {r: 0.7735849, g: 0, b: 0.572875, a: 1}
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 2060070606}
 --- !u!65 &2060070605
 BoxCollider:
   m_ObjectHideFlags: 0

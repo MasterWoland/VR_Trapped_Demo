@@ -10,7 +10,7 @@ Material:
   m_Name: M_Tron_002
   m_Shader: {fileID: -6465566751694194690, guid: c535fd204357b704a99c5f27e999d9b0, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -38,15 +38,20 @@ Material:
     m_Floats:
     - Boolean_04f45f82362746c8a186f49b568ab8fa: 0
     - Vector1_12f61988a0fb412ba7c0b9f303d601f8: 0.98
-    - Vector1_1f495686dc1a49d695e17c239bcf93ea: 0
+    - Vector1_1f495686dc1a49d695e17c239bcf93ea: 0.5
     - Vector1_5335659a55d648b0a660c0d5b4ecb29d: 0.05
     - Vector1_585a9fc43cd24d848a8fbc9537de31a7: 0
     - Vector1_6fd0e6d965334dafb48177e85012e460: 1
     - Vector1_7dbd065ffc3145178a75adfb6f8c958f: 0.1
     - Vector1_c3c06978b3cd4767bdf13ddc1cfba9c9: 0
+    - _DitherAmount: 0
+    - _UseDither: 0
     m_Colors:
     - Color_280d2b0e090644dda1c52cd5218a0764: {r: 1, g: 1, b: 1, a: 1}
     - Color_2b0baf2108ef4b2f9d62e57ffabf1aeb: {r: 0, g: 0, b: 0, a: 1}
     - Vector2_b4d3d45a6c1b44db841d13db016d65d2: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_d91011e0971a43b19cf634253c9ba047: {r: 1, g: 1, b: 0, a: 0}
+    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TextureOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _mainColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

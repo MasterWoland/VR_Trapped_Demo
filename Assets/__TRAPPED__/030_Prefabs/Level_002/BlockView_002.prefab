@@ -56,7 +56,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c828eab64c1196544aba348253f20471, type: 2}
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 8093333257237371763}
   - component: {fileID: 8093333257237371764}
   - component: {fileID: -7133457980410902632}
+  - component: {fileID: 6096554862875655173}
   m_Layer: 7
   m_Name: BlockView_002
   m_TagString: Block
@@ -305,3 +306,15 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _debugText: {fileID: 1240119655493589304}
+--- !u!114 &6096554862875655173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093333257237371765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb096e6d0624ad545a619a61487cbed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

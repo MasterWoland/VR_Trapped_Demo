@@ -91,8 +91,8 @@ namespace nl.allon.managers
                 if (!_destroyedBlocks.Contains(_blockControllers[blockId]))
                 {
                     _destroyedBlocks.Add(_blockControllers[blockId]);
-                    Debug.Log("_____ found destroyed block! : " + blockId);
-                    Debug.Log("Num destroyed Blocks: " + _destroyedBlocks.Count);
+                    // Debug.Log("_____ found destroyed block! : " + blockId);
+                    // Debug.Log("Num destroyed Blocks: " + _destroyedBlocks.Count);
 
                     if (_destroyedBlocks.Count >= amount)
                     {

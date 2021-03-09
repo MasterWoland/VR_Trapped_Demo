@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 8093333257237371763}
   - component: {fileID: 8093333257237371764}
   - component: {fileID: -7133457980410902632}
+  - component: {fileID: 6061273202619345622}
   m_Layer: 7
   m_Name: BlockView_001
   m_TagString: Block
@@ -305,3 +306,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _debugText: {fileID: 2105351724980302667}
+--- !u!114 &6061273202619345622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093333257237371765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb096e6d0624ad545a619a61487cbed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 0, y: 0}
+  MaterialColor: {r: 0, g: 0, b: 0, a: 0}
+  UseDither: 0

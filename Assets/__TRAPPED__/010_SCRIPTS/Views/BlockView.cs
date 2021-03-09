@@ -1,3 +1,4 @@
+using nl.allon.components;
 using nl.allon.controllers;
 using nl.allon.events;
 using Pixelplacement;
@@ -16,7 +17,8 @@ namespace nl.allon.views
         private float _appearDelay = 0.33f; //MRA: obtain this from model/config
         private BlockDelegate _appearCompleteCallback = null;
         private int _id = -1;
-
+        private BlockMaterial _blockMaterial = default;
+        
         // MRA: TEMP
         [SerializeField] private TextMeshPro _debugText;
         private float _highestImpact = 0;
@@ -24,6 +26,9 @@ namespace nl.allon.views
         private void Awake()
         {
             _transform = transform;
+            _blockMaterial = GetComponent<BlockMaterial>();
+            
+            if(_blockMaterial == null) Debug.LogError("[BlockView] No BlockMaterial Component found");
         }
 
         public void Appear(int blockId, BlockDelegate callback)
@@ -60,7 +65,9 @@ namespace nl.allon.views
             // _health -= (int)impact;
             if (_id >= 0)
             {
+                _blockMaterial.ApplyHitEffect(impact);
                 _blockImpactEvent?.Dispatch(_id, impact);
+                ShowDebugInfo(impact);
             }
             else
             {
@@ -78,10 +85,10 @@ namespace nl.allon.views
         }
 
         // MRA: TEMP
-        public void ShowDebugInfo(int info)
+        public void ShowDebugInfo(float info)
         {
             // health
-            _debugText.text = info.ToString("0000");
+            _debugText.text = info.ToString("000.0");
 
             // if (info > _highestImpact)
             // {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace nl.allon.utils
 {
@@ -10,6 +11,7 @@ namespace nl.allon.utils
         public Color MaterialColor;
         public MaterialPropertyBlock _propertyBlock;
         public Renderer _renderer;
+        private int _mainColorID;
         
         private void Awake()
         {
@@ -19,8 +21,10 @@ namespace nl.allon.utils
         {
             _propertyBlock = new MaterialPropertyBlock();
             _renderer = GetComponent<Renderer>();
-            _renderer.SetPropertyBlock(_propertyBlock);
+
+            _mainColorID = Shader.PropertyToID("_MainColor");
             Debug.Log("Renderer: "+_renderer.name);
+            Debug.Log("color ID: "+_mainColorID);
             
         }
 
@@ -34,19 +38,21 @@ namespace nl.allon.utils
             //Get a renderer component either of the own gameobject or of a child
             Renderer renderer = GetComponent<Renderer>();
             //set the color property
-            _propertyBlock.SetColor("_MainColor", MaterialColor);
+            _renderer.GetPropertyBlock(_propertyBlock);// always get the property before changing it with MaterialPropertyBlocks
+            _propertyBlock.SetColor(_mainColorID, MaterialColor);
             //apply propertyBlock to renderer
             renderer.SetPropertyBlock(_propertyBlock);
         }
 
         private void Update()
         {
-            _propertyBlock.SetColor("_BaseColor", Color.red);
-            _propertyBlock.SetColor("_MainColor", Color.red);
+            _renderer.GetPropertyBlock(_propertyBlock);// always get the property before changing it with MaterialPropertyBlocks
+            // _propertyBlock.GetColor(_mainColorID); 
+            _propertyBlock.SetColor(_mainColorID, Random.ColorHSV());
             _renderer.SetPropertyBlock(_propertyBlock);
             
-            Color c = _propertyBlock.GetColor("_MainColor");
-            Color c2 = _propertyBlock.GetColor("_BaseColor");
+            Color c = _propertyBlock.GetColor(_mainColorID);
+            Color c2 = _propertyBlock.GetColor(_mainColorID);
             Debug.Log("Color: "+c2);
             
             // _renderer.material.SetColor("_MainColor", Color.red);

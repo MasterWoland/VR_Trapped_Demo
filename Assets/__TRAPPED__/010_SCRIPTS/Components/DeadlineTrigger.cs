@@ -12,7 +12,7 @@ namespace nl.allon.components
         
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("[Deadline] Triggered by: "+other.name);
+            // Debug.Log("[Deadline] Triggered by: "+other.name);
             _deadlineTriggeredEvent?.Dispatch();
         }
     }

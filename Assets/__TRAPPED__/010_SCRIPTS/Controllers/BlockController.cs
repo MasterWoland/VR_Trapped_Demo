@@ -79,7 +79,7 @@ namespace nl.allon.controllers
                 
                 float impact = value * _model.Config.BlockImpactMultiplier;
                 _model.Health -= (int)impact;
-                _view.ShowDebugInfo(_model.Health);
+                //_view.ShowDebugInfo(_model.Health);
 
                 if (_model.Health <= 0)
                 {
