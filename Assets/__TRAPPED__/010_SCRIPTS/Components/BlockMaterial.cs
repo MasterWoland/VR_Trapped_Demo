@@ -66,9 +66,12 @@ namespace nl.allon.components
             _renderer.SetPropertyBlock(_propertyBlock);
 
             // map duration to impact value
-            if (impact >= 20f) impact = 20f; // MRA get this value from config
-            _duration = impact.Remap(0f, 20f, 0f, 2f);
+            if (impact >= 10f) impact = 10f; // MRA get this value from config
+            _duration = impact.Remap(0f, 10f, 0f, 1f);
 
+            // MRA: long durations do not feel right, let's try a flash
+            _duration = 0.15f; // TODO: add this to config
+            
             Debug.LogFormat("Impact: {0}, Duration: {1} ", impact, _duration);
             
             Tween.Value(0f, 0.8f, UpdateDither, _duration, 0f, _pulseCurve, Tween.LoopType.None, null, OnHitEffectReachedMax);

@@ -2,9 +2,9 @@ namespace nl.allon.utils
 {
     public static class ExtensionMethods
     {
-        public static float Remap(this float value, float from1, float to1, float from2, float to2)
+        public static float Remap(this float value, float low1, float high1, float low2, float high2)
         {
-            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+            return (value - low1) / (high1 - low1) * (high2 - low2) + low2;
         }
     }
 }
