@@ -11,9 +11,10 @@ namespace nl.allon.controllers
  
     public class BlockController : MonoBehaviour
     {
-        [SerializeField] private FloatIdEvent _blockImpactEvent;
+        [SerializeField] private CollisionIdEvent _blockImpactEvent;
         [SerializeField] private IntEvent _blockDestroyedEvent;
         [SerializeField] private SimpleEvent _blockInPositionEvent = default;
+        [SerializeField] private Vector3FloatEvent _ballHitsBlockEvent = default;
         private BlockModel _model;
         private BlockView _view;
         // private bool _isMarkedAsDestroyed = false;
@@ -66,7 +67,7 @@ namespace nl.allon.controllers
             _blockImpactEvent.Handler += OnBlockImpact;
         }
 
-        private void OnBlockImpact(int id, float value)
+        private void OnBlockImpact(Collision collision, int id)
         {
             if (_model.BlockId == id)
             {
@@ -75,6 +76,7 @@ namespace nl.allon.controllers
                 // MRA: for now we set a limit to 100 for the value.
                 // In unforeseen cases the velocity of the ball may be beyond logical values, so we have to cap this
 
+                float value = collision.rigidbody.velocity.magnitude;
                 if (value > 100f) value = 100f;
                 
                 float impact = value * _model.Config.BlockImpactMultiplier;
@@ -85,6 +87,11 @@ namespace nl.allon.controllers
                 {
                     _blockDestroyedEvent?.Dispatch(_model.BlockId);
                     DestroyBlock();
+                }
+                else
+                {
+                    // dispatch an event so we can show a particle effect, play a sound effect 
+                    _ballHitsBlockEvent?.Dispatch(collision.contacts[0].point, value);
                 }
             }
             else

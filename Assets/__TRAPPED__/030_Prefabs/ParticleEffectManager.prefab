@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1868866017803774209
+--- !u!1 &9006145931661033326
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1868866017803774208}
-  - component: {fileID: 2857980045902896103}
+  - component: {fileID: 9006145931661033320}
+  - component: {fileID: 9006145931661033327}
   m_Layer: 0
-  m_Name: BlockController
+  m_Name: ParticleEffectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1868866017803774208
+--- !u!4 &9006145931661033320
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868866017803774209}
+  m_GameObject: {fileID: 9006145931661033326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,19 +31,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2857980045902896103
+--- !u!114 &9006145931661033327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868866017803774209}
+  m_GameObject: {fileID: 9006145931661033326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a38d0aa9028457947abcaf7bbc23c231, type: 3}
+  m_Script: {fileID: 11500000, guid: cc68c3d630b303e4cb6a3e415c3e167a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockImpactEvent: {fileID: 11400000, guid: 2dc2e90e1628cb746ba388ca3b742250, type: 2}
-  _blockDestroyedEvent: {fileID: 11400000, guid: 42c9002dd192dfc49a6e6bc57d3ba4e0, type: 2}
-  _blockInPositionEvent: {fileID: 11400000, guid: 4e7166400b95c3d448f5192be77d4ba6, type: 2}
+  _gameConfigEvent: {fileID: 11400000, guid: fbc31d5053eeca34c86f0c90480a66de, type: 2}
   _ballHitsBlockEvent: {fileID: 11400000, guid: 4e543edce21b2724a8ca864acdec09b7, type: 2}
+  _ballHitBlockParticlePrefab: {fileID: 6118326729459220145, guid: 50e942cf214cc0541b33fb71c872754e, type: 3}

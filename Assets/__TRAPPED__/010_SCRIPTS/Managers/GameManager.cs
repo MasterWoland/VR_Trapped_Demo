@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using nl.allon.configs;
 using nl.allon.events;
 using nl.allon.utils;
 using UnityEngine;
@@ -25,7 +26,10 @@ namespace nl.allon.managers
         private GameState _currentGameState = GameState.BOOT;
         // private GameState CurrentGameState { get { return _currentGameState; } }
 
+        [SerializeField] private GameConfig _config = default;
+        
         // Events
+        [SerializeField] private GameConfigEvent _gameConfigEvent = default;
         [SerializeField] private SimpleEvent _obtainDeviceDataEvent = default;
         [SerializeField] private GameStateEvent _gameStateEvent = default;
         [SerializeField] private SceneEvent _sceneLoadedEvent = default;
@@ -125,6 +129,7 @@ namespace nl.allon.managers
                 case SCENE_NAME.Game:
                     // We have no Menu State at this moment, so we go to the Level Info State
                     ChangeState(GameState.MENU);
+                    _gameConfigEvent?.Dispatch(_config);
                     break;
                 default:
                     break;

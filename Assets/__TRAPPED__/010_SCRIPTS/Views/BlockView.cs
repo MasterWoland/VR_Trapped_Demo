@@ -9,7 +9,7 @@ namespace nl.allon.views
 {
     public class BlockView : MonoBehaviour
     {
-        [SerializeField] private FloatIdEvent _blockImpactEvent = default;
+        [SerializeField] private CollisionIdEvent _blockImpactEvent = default;
         [SerializeField] private AnimationCurve _appearCurve = default;
         private Transform _transform;
         private Vector3 _targetPos = Vector3.zero;
@@ -66,7 +66,7 @@ namespace nl.allon.views
             if (_id >= 0)
             {
                 _blockMaterial.ApplyHitEffect(impact);
-                _blockImpactEvent?.Dispatch(_id, impact);
+                _blockImpactEvent?.Dispatch(collision, _id);
                 ShowDebugInfo(impact);
             }
             else

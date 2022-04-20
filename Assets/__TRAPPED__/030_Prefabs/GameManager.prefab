@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d08014e6cf8e24bbe3b72342315215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 172621c9e9a6247469cd9bd2b85d7a54, type: 2}
+  _gameConfigEvent: {fileID: 11400000, guid: fbc31d5053eeca34c86f0c90480a66de, type: 2}
   _obtainDeviceDataEvent: {fileID: 11400000, guid: 0ce9e206f12efa74786fe075fd0b7a94, type: 2}
   _gameStateEvent: {fileID: 11400000, guid: fc085e7af99ac0a44abc1fd9c6b08830, type: 2}
   _sceneLoadedEvent: {fileID: 11400000, guid: 73a22b1c03a896b42851aa0ccf4eb438, type: 2}
