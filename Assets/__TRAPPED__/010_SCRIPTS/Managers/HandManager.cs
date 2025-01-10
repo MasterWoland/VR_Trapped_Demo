@@ -71,9 +71,9 @@ namespace nl.allon.managers
         #region HELPER METHODS
         private void PrepareController()
         {
+
             DeviceData.Platform platform = _deviceData.CurrentPlatform;
             GameObject go = null;
-
             switch (platform)
             {
                 case DeviceData.Platform.QUEST:
@@ -89,7 +89,8 @@ namespace nl.allon.managers
                     go = _controllerIndexPrefab;
                     break;
                 default:
-                    Debug.LogError("[HM] No valid platform detected: " + platform);
+                    go = _controllerIndexPrefab;
+                    // Debug.LogError("[HM] No valid platform detected: " + platform);
                     break;
             }
 

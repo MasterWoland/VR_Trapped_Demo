@@ -1,0 +1,11 @@
+[LicensingClient] Channel doesn't exist: "LicenseClient-marka"
+[Licensing::Module] Successfully launched the LicensingClient (PId: 26940)
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-marka" (connect: 0.29s, validation: 0.03s, handshake: 0.44s)
+[Licensing::Module] Connected to LicensingClient (PId: 26940, launch time: 0.01, total connection time: 0.77s)
+Entitlement-based licensing initiated
+[LicensingClient] Licenses updated successfully
+
+LICENSE SYSTEM [20241223 18:10:51] Unity license has expired. Please re-activate new license.
+BatchMode: Unity has not been activated with a valid License. Could be a new activation or renewal...
+Current license is invalid and cannot be activated. You must delete the license file and then activate a new license on current machine.
+Exiting without the bug reporter. Application will terminate with return code 0
